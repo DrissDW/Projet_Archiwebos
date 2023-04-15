@@ -1,5 +1,7 @@
+
+//Récupération des works depuis le serveur web 
 const reponse = await fetch("http://localhost:5678/api/works");
- let works = await reponse.json();
+const works = await reponse.json();
 
 
-console.log(works);
+console.log(works)
