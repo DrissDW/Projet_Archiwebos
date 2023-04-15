@@ -186,3 +186,27 @@ footer nav ul {
 	margin: 2em
 }
 
+/* filter */
+
+.filter {
+	/* border: 2px solid red; */
+	padding-left: 240px;
+	margin-bottom: 20px; 
+}
+.filter button {
+	margin-right: 12px;
+	border-radius: 20px;
+	color:rgb(29,97,84);
+	border-color:rgb(29,97,84) ;
+	background-color:rgb(255,254,248) ;
+	font-size: 18px;
+	padding:8px 26px 8px 26px;
+	font-weight: bold;
+}
+
+.filter button:hover {
+	background-color:rgb(29,97,84) ;
+	color: rgb(255,254,248);
+}
+	
+
