@@ -198,7 +198,7 @@ footer nav ul {
 	border-radius: 20px;
 	color:rgb(29,97,84);
 	border-color:rgb(29,97,84) ;
-	background-color:rgb(255,254,248) ;
+	background-color:white ;
 	font-size: 18px;
 	padding:8px 26px 8px 26px;
 	font-weight: bold;
@@ -206,7 +206,7 @@ footer nav ul {
 
 .filter button:hover {
 	background-color:rgb(29,97,84) ;
-	color: rgb(255,254,248);
+	color: white;
 }
 	
 
