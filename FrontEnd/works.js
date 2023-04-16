@@ -50,4 +50,14 @@ bouttonFilterObjet.addEventListener("click", function () {
   generateProjects(filterObjet);
 });
 
+//Ajout du listener pour filtrer les projets qui on pour catégorie "Appartements"
+const bouttonFilterAppartements = document.querySelector(".btn-appartements");
+bouttonFilterAppartements.addEventListener("click", function(){
+  const filterAppartements = works.filter(function (objet){
+    return objet.category.name === "Appartements";
+  });
 
+  // effacement de l'écran et régénération de la page
+  document.querySelector(".gallery").innerHTML = "";
+  generateProjects(filterAppartements);
+});
