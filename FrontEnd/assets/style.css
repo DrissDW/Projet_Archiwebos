@@ -202,6 +202,7 @@ footer nav ul {
 	font-size: 18px;
 	padding:8px 26px 8px 26px;
 	font-weight: bold;
+	border: 2px solid;
 }
 
 .filter button:hover {
