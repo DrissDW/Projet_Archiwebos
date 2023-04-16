@@ -31,7 +31,14 @@ function generateProjects(works) {
 
 generateProjects(works);
 
-//Ajout du Listener pour filtrer les projets qui on pour catégorie 1 (tous)
+
+//Ajout du Listener pour afficher tous les projets (Tous) 
+const bouttonFilterTous = document.querySelector(".btn-tous");
+bouttonFilterTous.addEventListener("click", function(){
+  generateProjects(works);
+});
+
+//Ajout du Listener pour filtrer les projets qui on pour catégorie "Objets"
 const bouttonFilterObjet = document.querySelector(".btn-objets");
 bouttonFilterObjet.addEventListener("click", function () {
   const filterObjet = works.filter(function (objet) {
@@ -42,3 +49,5 @@ bouttonFilterObjet.addEventListener("click", function () {
   document.querySelector(".gallery").innerHTML = "";
   generateProjects(filterObjet);
 });
+
+
