@@ -31,17 +31,15 @@ function generateProjects(works) {
 
 generateProjects(works);
 
-
-//Ajout du Listener pour afficher tous les projets (Tous) 
+//Ajout du Listener pour afficher tous les projets (Tous)
 const bouttonFilterTous = document.querySelector(".btn-tous");
-bouttonFilterTous.addEventListener("click", function(){
-  const filterTous = works.filter(function(objet) {
-    return objet.category.name ;
+bouttonFilterTous.addEventListener("click", function () {
+  const filterTous = works.filter(function (objet) {
+    return objet.category.name;
   });
-// effacement de l'écran et régénération de la page
-document.querySelector(".gallery").innerHTML = "";
-generateProjects(filterTous);
-
+  // effacement de l'écran et régénération de la page
+  document.querySelector(".gallery").innerHTML = "";
+  generateProjects(filterTous);
 });
 
 //Ajout du Listener pour filtrer les projets qui on pour catégorie "Objets"
@@ -58,12 +56,26 @@ bouttonFilterObjet.addEventListener("click", function () {
 
 //Ajout du listener pour filtrer les projets qui on pour catégorie "Appartements"
 const bouttonFilterAppartements = document.querySelector(".btn-appartements");
-bouttonFilterAppartements.addEventListener("click", function(){
-  const filterAppartements = works.filter(function (objet){
+bouttonFilterAppartements.addEventListener("click", function () {
+  const filterAppartements = works.filter(function (objet) {
     return objet.category.name === "Appartements";
   });
 
   // effacement de l'écran et régénération de la page
   document.querySelector(".gallery").innerHTML = "";
   generateProjects(filterAppartements);
+});
+
+// Ajout du listener pour filtrer les projets qui on pour catégorie "Hotels & restaurants"
+const bouttonFilterHotelsRestaurants = document.querySelector(
+  ".btn-hotels-restaurants"
+);
+bouttonFilterHotelsRestaurants.addEventListener("click", function () {
+  const filterHotelsRestaurants = works.filter(function (objet) {
+    return objet.category.name === "Hotels & restaurants";
+  });
+
+  // effacement de l'écran et régénération de la page
+  document.querySelector(".gallery").innerHTML = "";
+  generateProjects(filterHotelsRestaurants);
 });
