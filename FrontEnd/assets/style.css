@@ -157,7 +157,7 @@ h1 {
   font-family: "Syne";
   font-size: 22px;
   font-weight: 800;
-  color: #b1663c;
+  color:rgb(177,102,60) ;
 }
 
 h1 > span {
@@ -188,6 +188,8 @@ li:hover {
 #introduction {
   display: flex;
   align-items: center;
+  /* border: 2px solid black; */
+  width: 100%;
 }
 #introduction figure {
   flex: 1;
@@ -200,6 +202,9 @@ li:hover {
 
 #introduction article {
   flex: 1;
+  line-height: 130%;
+  /* border: 2px solid red; */
+  font-size: 15px;
 }
 #introduction h2 {
   margin-bottom: 1em;
@@ -300,9 +305,9 @@ footer nav ul {
 #login-title {
   /* border: 2px solid black; */
   margin-top: 120px;
-
+margin-left: 510px;
   display: flex;
-  justify-content: center;
+  
 }
 
 .login {
@@ -351,7 +356,7 @@ footer .mention{
 font-size: 16px;
 display: flex;
 justify-content: end;
-margin-top: 320px;
+margin-top: 620px;
 }
 
 nav a {
@@ -362,5 +367,8 @@ nav a {
   nav a:hover {
 	font-weight: bolder;
   }
+
+
+  
   
   
