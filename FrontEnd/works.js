@@ -35,7 +35,13 @@ generateProjects(works);
 //Ajout du Listener pour afficher tous les projets (Tous) 
 const bouttonFilterTous = document.querySelector(".btn-tous");
 bouttonFilterTous.addEventListener("click", function(){
-  generateProjects(works);
+  const filterTous = works.filter(function(objet) {
+    return objet.category.name ;
+  });
+// effacement de l'écran et régénération de la page
+document.querySelector(".gallery").innerHTML = "";
+generateProjects(filterTous);
+
 });
 
 //Ajout du Listener pour filtrer les projets qui on pour catégorie "Objets"
