@@ -7,8 +7,8 @@ html {
   background-color: rgb(255, 254, 248);
 }
 
-.instagram-icone{
-	width: 19px;
+.instagram-icone {
+  width: 22px;
 }
 
 html,
@@ -146,6 +146,8 @@ header {
   display: flex;
   justify-content: space-between;
   margin: 50px 0;
+  /* border: 2px solid black; */
+  margin-right: 50px;
 }
 section {
   margin: 50px 0;
@@ -157,7 +159,7 @@ h1 {
   font-family: "Syne";
   font-size: 22px;
   font-weight: 800;
-  color:rgb(177,102,60) ;
+  color: rgb(177, 102, 60);
 }
 
 h1 > span {
@@ -169,7 +171,7 @@ h1 > span {
 h2 {
   font-family: "Syne";
   font-weight: 700;
-  font-size: 30px;
+  font-size: 27px;
   color: #1d6154;
 }
 nav ul {
@@ -178,8 +180,10 @@ nav ul {
   list-style-type: none;
 }
 nav li {
-  padding: 0 10px;
+  padding: 0 25px;
   font-size: 1.2em;
+  /* border: 2px solid black; */
+  /* padding-right: 10px; */
 }
 
 li:hover {
@@ -189,33 +193,39 @@ li:hover {
   display: flex;
   align-items: center;
   /* border: 2px solid black; */
-  width: 100%;
+  width: 75%;
+  margin-left: 100px;
+  margin-top: 125px;
 }
 #introduction figure {
   flex: 1;
 }
 #introduction img {
-  display: block;
-  margin: auto;
-  width: 80%;
+  /* display: block; */
+  /* margin: auto; */
+  width: 455px;
+  /* margin-right: 50px; */
 }
 
 #introduction article {
   flex: 1;
-  line-height: 130%;
+  line-height: 120%;
   /* border: 2px solid red; */
-  font-size: 15px;
+  font-size: 12.5px;
+  margin-left: 65px;
+  text-align: left;
 }
 #introduction h2 {
-  margin-bottom: 1em;
+  margin-bottom: 0.8em;
 }
 
 #introduction p {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.8em;
 }
 #portfolio h2 {
   text-align: center;
   margin-bottom: 1em;
+  margin-top: 90px;
 }
 .gallery {
   width: 100%;
@@ -305,17 +315,19 @@ footer nav ul {
 #login-title {
   /* border: 2px solid black; */
   margin-top: 120px;
-margin-left: 510px;
+  margin-left: 475px;
+  margin-right: 500px;
   display: flex;
-  
 }
 
 .login {
   /* border: 2px solid red; */
-  display: flex;
-  flex-direction: column;
-  margin-left: 400px;
+  /* display: flex; */
+  /* flex-direction: column; */
+  margin-left: 350px;
   font-size: 16px;
+  /* margin-right: auto; */
+  width: 50%;
 }
 
 .login #email {
@@ -324,6 +336,10 @@ margin-left: 510px;
   border: none;
   box-shadow: 2px 2px 8px rgb(223, 223, 223);
   display: flex;
+}
+
+main {
+  border: 2px solid transparent;
 }
 
 .login #password {
@@ -348,7 +364,7 @@ form label {
 }
 
 .login #connect:hover {
-  background-color:rgb(14,47,40) ;
+  background-color: rgb(14, 47, 40);
 }
 
 .login a {
@@ -356,24 +372,27 @@ form label {
   color: black;
 }
 
-footer .mention{
-/* border: 2px solid red;	 */
-font-size: 16px;
-display: flex;
-justify-content: end;
-margin-top: 405px;
+footer .mention {
+  /* border: 2px solid red;	 */
+  font-size: 16px;
+  display: flex;
+  justify-content: end;
+  margin-top: 310px;
+  margin-right: 20px;
 }
 
 nav a {
-	text-decoration: none;
-	color: black;
-  }
-  
-  nav a:hover {
-	font-weight: bolder;
-  }
+  text-decoration: none;
+  color: black;
+}
 
+nav a:hover {
+  font-weight: bolder;
+}
 
-  
-  
-  
+.gallery {
+  border: 2px solid red;
+  width: 1000px;
+  margin-left: 56px;
+  margin-top: 45px;
+}
