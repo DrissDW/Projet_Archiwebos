@@ -79,3 +79,10 @@ bouttonFilterHotelsRestaurants.addEventListener("click", function () {
   document.querySelector(".gallery").innerHTML = "";
   generateProjects(filterHotelsRestaurants);
 });
+
+// code pour régler le pb de scroll du lien contacts sur la page login.html
+const monLienContact = document.getElementById("monLienContact");
+monLienContact.addEventListener("click", function () {
+  <a href="index.html"></a>;
+  <a href="#contact"></a>;
+});
