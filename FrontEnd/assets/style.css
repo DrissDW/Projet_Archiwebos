@@ -344,6 +344,11 @@ form label {
   /* border: 2px solid red; */
   margin-left: 85px;
   padding: 8px 10px 8px 10px;
+  border: none;
+}
+
+.login #connect:hover {
+  background-color:rgb(14,47,40) ;
 }
 
 .login a {
@@ -356,7 +361,7 @@ footer .mention{
 font-size: 16px;
 display: flex;
 justify-content: end;
-margin-top: 620px;
+margin-top: 405px;
 }
 
 nav a {
