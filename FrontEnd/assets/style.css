@@ -4,6 +4,7 @@
 */
 
 body {
+ 
   background-color: rgb(255, 254, 248);
 }
 
@@ -141,16 +142,20 @@ body {
   margin: auto;
   font-family: "Work Sans";
   font-size: 14px;
+  border: 2px solid transparent;
 }
 header {
+  
   display: flex;
   justify-content: space-between;
   margin: 50px 0;
   /* border: 2px solid black; */
   margin-right: 50px;
+  margin-left: 40px;
 }
 section {
   margin: 50px 0;
+  
 }
 
 h1 {
@@ -194,7 +199,7 @@ li:hover {
   align-items: center;
   /* border: 2px solid black; */
   /* width: 50%; */
-  margin-left: 100px;
+  margin-left: 110px;
   margin-right: 110px;
   margin-top: 125px;
 }
@@ -329,7 +334,7 @@ footer nav ul {
 #login-title {
   /* border: 2px solid black; */
   margin-top: 120px;
-  margin-left: 475px;
+  margin-left: 515px;
   margin-right: 500px;
   display: flex;
 }
@@ -338,7 +343,7 @@ footer nav ul {
   /* border: 2px solid red; */
   /* display: flex; */
   /* flex-direction: column; */
-  margin-left: 350px;
+  margin-left: 389px;
   font-size: 16px;
   /* margin-right: auto; */
   width: 50%;
@@ -391,11 +396,12 @@ footer .mention {
   font-size: 16px;
   display: flex;
   justify-content: end;
-  margin-top: 480px;
+  margin-top: 505px;
   margin-right: 20px;
   background-color: white;
-  width: 100%;
+  width:1097px ;
   padding: 20px;
+  
 }
 
 nav a {
@@ -410,13 +416,13 @@ nav a:hover {
 .gallery {
   /* border: 2px solid red; */
   width: 920px;
-  margin-left: 100px;
-  /* margin-right: 100px; */
+  margin-left: 110px;
+  margin-right: 110px;
   margin-top: 45px;
 }
 
 footer nav {
   background-color: white;
   /* border: 2px solid red; */
-  padding: 15px;
+  
 }
