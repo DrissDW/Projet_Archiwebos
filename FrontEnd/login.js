@@ -10,6 +10,20 @@ loginForm.addEventListener("submit", async function (event) {
 
   // création de la charge utile au format JSON
   const chargeUtile = JSON.stringify({ email, password });
+  if (!email || !password){
+    const errorMessageElement = document.createElement("p");
+    errorMessageElement.innerText =
+    "Veuillez entrer un Email et un mot de passe valides.";
+    const errorMessage = document.querySelector(".error-msg-1");
+    errorMessage.appendChild(errorMessageElement);
+
+    //Ajout d'un listener sur le bouton qui fait que le message se supprime pour éviter
+    //les répétition
+    const submitButton = document.querySelector("#connect");
+    submitButton.addEventListener("click", () => {
+      document.querySelector(".error-msg-1").innerHTML = ""; // ou errorMessageElement.remove();
+    });
+  }
 
   if (email && password) {
     const rep = await fetch("http://localhost:5678/api/users/login", {
@@ -17,6 +31,7 @@ loginForm.addEventListener("submit", async function (event) {
       headers: { "Content-Type": "application/json" },
       body: chargeUtile,
     });
+   
 
     if (rep.ok) {
       //si la reponse est ok, on récupère les données JSON de la réponse
@@ -37,14 +52,14 @@ loginForm.addEventListener("submit", async function (event) {
       const errorMessageElement = document.createElement("p");
       errorMessageElement.innerText =
         "Adresse email ou mot de passe incorrect.";
-      const errorMessage = document.querySelector(".error-msg");
+      const errorMessage = document.querySelector(".error-msg-2");
       errorMessage.appendChild(errorMessageElement);
 
       //Ajout d'un listener sur le bouton qui fait que le message se supprime pour éviter
       //les répétition
       const submitButton = document.querySelector("#connect");
       submitButton.addEventListener("click", () => {
-        document.querySelector(".error-msg").innerHTML = "";
+        document.querySelector(".error-msg-2").innerHTML = ""; // ou errorMessageElement.remove();
       });
 
       //solution timer

@@ -427,9 +427,20 @@ footer nav {
   /* border: 2px solid red; */
 }
 
-.error-msg p{
+/* Error message login */
+
+.error-msg-2 p {
   padding-top: 20px;
   padding-left: 15px;
+  font-weight: bolder;
+  color: red;
+}
+
+.error-msg-1 p {
+  padding-top: 20px;
+  position: relative;
+  right: 42px;
+  padding-left: 20px;
   font-weight: bolder;
   color: red;
 }
