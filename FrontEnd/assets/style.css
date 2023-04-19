@@ -4,7 +4,6 @@
 */
 
 body {
- 
   background-color: rgb(255, 254, 248);
 }
 
@@ -145,7 +144,6 @@ body {
   border: 2px solid transparent;
 }
 header {
-  
   display: flex;
   justify-content: space-between;
   margin: 50px 0;
@@ -155,7 +153,6 @@ header {
 }
 section {
   margin: 50px 0;
-  
 }
 
 h1 {
@@ -329,6 +326,11 @@ footer nav ul {
   color: white;
 }
 
+.filter button.active {
+  background-color: rgb(29, 97, 84);
+  color: white;
+}
+
 /* Login.html */
 
 #login-title {
@@ -399,9 +401,8 @@ footer .mention {
   margin-top: 505px;
   margin-right: 20px;
   background-color: white;
-  width:1097px ;
+  width: 1097px;
   padding: 20px;
-  
 }
 
 nav a {
@@ -424,5 +425,4 @@ nav a:hover {
 footer nav {
   background-color: white;
   /* border: 2px solid red; */
-  
 }
