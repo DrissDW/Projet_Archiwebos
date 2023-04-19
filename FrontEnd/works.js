@@ -1,3 +1,7 @@
+//récupération du token
+ const token = localStorage.getItem("token");
+
+
 //Récupération des works depuis le serveur web
 const reponse = await fetch("http://localhost:5678/api/works");
 const works = await reponse.json();
@@ -30,6 +34,21 @@ function generateProjects(works) {
 }
 
 generateProjects(works);
+
+//Ajout du listener pour changer la couleur d'un bouton du filter lorsque l'on clique dessus
+const buttons = document.querySelectorAll('.filter button');
+
+for (const button of buttons) {
+  button.addEventListener('click', () => {
+      for (const button of buttons) {
+       button.classList.remove('active');
+     }
+    button.classList.add('active');
+  });
+}
+
+
+
 
 //Ajout du Listener pour afficher tous les projets (Tous)
 const bouttonFilterTous = document.querySelector(".btn-tous");
@@ -66,18 +85,6 @@ bouttonFilterAppartements.addEventListener("click", function () {
   generateProjects(filterAppartements);
 });
 
-// Ajout du listener pour filtrer les projets qui on pour catégorie "Hotels & restaurants"
-const bouttonFilterHotelsRestaurants = document.querySelector(
-  ".btn-hotels-restaurants"
-);
-bouttonFilterHotelsRestaurants.addEventListener("click", function () {
-  const filterHotelsRestaurants = works.filter(function (objet) {
-    return objet.category.name === "Hotels & restaurants";
-  });
 
-  // effacement de l'écran et régénération de la page
-  document.querySelector(".gallery").innerHTML = "";
-  generateProjects(filterHotelsRestaurants);
-});
 
 
