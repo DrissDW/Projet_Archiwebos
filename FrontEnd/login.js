@@ -34,7 +34,11 @@ loginForm.addEventListener("submit", async function (event) {
       // redirection vers la page d'accueil
       window.location.href = "./index.html";
     } else {
-      alert("Identifiant ou mot de passe incorrect !");
+      const errorMessageElement = document.createElement("p");
+      errorMessageElement.innerText =
+        "Adresse email ou mot de passe incorrect.";
+      const errorMessage = document.querySelector(".error-msg");
+      errorMessage.appendChild(errorMessageElement);
     }
   }
 });
