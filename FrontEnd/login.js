@@ -39,6 +39,18 @@ loginForm.addEventListener("submit", async function (event) {
         "Adresse email ou mot de passe incorrect.";
       const errorMessage = document.querySelector(".error-msg");
       errorMessage.appendChild(errorMessageElement);
+
+      //Ajout d'un listener sur le bouton qui fait que le message se supprime pour éviter
+      //les répétition
+      const submitButton = document.querySelector("#connect");
+      submitButton.addEventListener("click", () => {
+        document.querySelector(".error-msg").innerHTML = "";
+      });
+
+      //solution timer
+      // setTimeout(() => {
+      //   errorMessageElement.remove();
+      // }, 3000);
     }
   }
 });
