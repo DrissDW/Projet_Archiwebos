@@ -453,4 +453,18 @@ footer nav {
   color: white;
   background-color: black;
   padding-left: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+#navbar-edition #btn-publier {
+  margin-top: 9px;
+  margin-bottom: 9px;
+  border-radius: 22px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: white;
+  font-size: 16px;
+  
+  
 }
