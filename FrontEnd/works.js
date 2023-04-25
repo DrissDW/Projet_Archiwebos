@@ -1,14 +1,33 @@
 //récupération du token
- const token = localStorage.getItem("token");
- 
- // ajout de la condition si token existe 
- if (token){
-  console.log("le token existe");
- }
- else {
-  console.log("le token n'existe pas");
- }
+const token = localStorage.getItem("token");
 
+// ajout de la condition si token existe
+if (token) {
+  // Navbar du mod Edition
+  const editionModNav = document.createElement("div");
+  editionModNav.innerHTML = "MODE EDITION";
+
+  //Ajout d'un ID à la div
+  editionModNav.id = "navbar-edition";
+
+  const bodyElement = document.querySelector("body");
+  const headerElement = document.querySelector("header");
+
+  // placer la div avant le header
+  bodyElement.insertBefore(editionModNav, headerElement);
+
+  // Ajout du bouton "publier" dans la navbar du edition mod
+  const buttonEditionModNav = document.createElement("button");
+  buttonEditionModNav.innerHTML = "publier les changements";
+
+  //ajout de l'id button
+  buttonEditionModNav.id = "btn-publier";
+
+  //Ajout du boutton à l'élément parent
+  editionModNav.appendChild(buttonEditionModNav);
+} else {
+  console.log("le token n'existe pas");
+}
 
 //Récupération des works depuis le serveur web
 const reponse = await fetch("http://localhost:5678/api/works");
@@ -44,19 +63,16 @@ function generateProjects(works) {
 generateProjects(works);
 
 //Ajout du listener pour changer la couleur d'un bouton du filter lorsque l'on clique dessus
-const buttons = document.querySelectorAll('.filter button');
+const buttons = document.querySelectorAll(".filter button");
 
 for (const button of buttons) {
-  button.addEventListener('click', () => {
-      for (const button of buttons) {
-       button.classList.remove('active');
-     }
-    button.classList.add('active');
+  button.addEventListener("click", () => {
+    for (const button of buttons) {
+      button.classList.remove("active");
+    }
+    button.classList.add("active");
   });
 }
-
-
-
 
 //Ajout du Listener pour afficher tous les projets (Tous)
 const bouttonFilterTous = document.querySelector(".btn-tous");
@@ -92,7 +108,3 @@ bouttonFilterAppartements.addEventListener("click", function () {
   document.querySelector(".gallery").innerHTML = "";
   generateProjects(filterAppartements);
 });
-
-
-
-
