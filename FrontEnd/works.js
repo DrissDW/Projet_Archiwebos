@@ -1,5 +1,13 @@
 //récupération du token
  const token = localStorage.getItem("token");
+ 
+ // ajout de la condition si token existe 
+ if (token){
+  console.log("le token existe");
+ }
+ else {
+  console.log("le token n'existe pas");
+ }
 
 
 //Récupération des works depuis le serveur web
