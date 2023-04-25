@@ -5,7 +5,7 @@ const token = localStorage.getItem("token");
 if (token) {
   // Navbar du mod Edition
   const editionModNav = document.createElement("div");
-  editionModNav.innerHTML = "MODE EDITION";
+  editionModNav.innerHTML = "";
 
   //Ajout d'un ID à la div
   editionModNav.id = "navbar-edition";
@@ -22,6 +22,20 @@ if (token) {
 
   //ajout de l'id button
   buttonEditionModNav.id = "btn-publier";
+
+  //Ajout du boutton à l'élément parent
+  editionModNav.appendChild(buttonEditionModNav);
+
+  //Ajout de l'icone mode édition
+  const iconEditionModNav = document.createElement("img")
+  iconEditionModNav.src = "./assets/icons/mod-edition-icon-archiwebos.png"
+
+  //placer l'image avant le button
+  // bodyElement.insertBefore(iconEditionModNav, buttonEditionModNav);
+  
+  
+  //Ajout de l'icone à lélément parent
+  editionModNav.appendChild(iconEditionModNav);
 
   //Ajout du boutton à l'élément parent
   editionModNav.appendChild(buttonEditionModNav);
