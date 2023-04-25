@@ -146,7 +146,7 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  margin: 50px 0;
+  margin: 40px 0;
   /* border: 2px solid black; */
   margin-right: 50px;
   margin-left: 40px;
@@ -448,7 +448,7 @@ footer nav {
 /* Edition MOD header */
 
 #navbar-edition {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   height: 59px;
   color: white;
   background-color: black;
@@ -465,8 +465,6 @@ footer nav {
   padding-right: 20px;
   background-color: white;
   font-size: 14px;
-  
-  
 }
 
 #navbar-edition img {
@@ -475,4 +473,3 @@ footer nav {
   margin-top: 16px;
   margin-right: 10px;
 }
-
