@@ -444,3 +444,13 @@ footer nav {
   font-weight: bolder;
   color: red;
 }
+
+/* Edition MOD */
+
+#navbar-edition {
+  border: 2px solid black;
+  height: 59px;
+  color: white;
+  background-color: black;
+  padding-left: 50px;
+}
