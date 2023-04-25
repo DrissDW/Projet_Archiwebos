@@ -445,7 +445,7 @@ footer nav {
   color: red;
 }
 
-/* Edition MOD */
+/* Edition MOD header */
 
 #navbar-edition {
   border: 2px solid black;
@@ -464,7 +464,15 @@ footer nav {
   padding-left: 20px;
   padding-right: 20px;
   background-color: white;
-  font-size: 16px;
+  font-size: 14px;
   
   
 }
+
+#navbar-edition img {
+  width: 145px;
+  height: 28px;
+  margin-top: 16px;
+  margin-right: 10px;
+}
+
