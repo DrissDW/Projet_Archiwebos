@@ -27,18 +27,36 @@ if (token) {
   editionModNav.appendChild(buttonEditionModNav);
 
   //Ajout de l'icone mode édition
-  const iconEditionModNav = document.createElement("img")
-  iconEditionModNav.src = "./assets/icons/mod-edition-icon-archiwebos.png"
+  const iconEditionModNav = document.createElement("img");
+  iconEditionModNav.src = "./assets/icons/mod-edition-icon-archiwebos.png";
 
   //placer l'image avant le button
   // bodyElement.insertBefore(iconEditionModNav, buttonEditionModNav);
-  
-  
+
   //Ajout de l'icone à lélément parent
   editionModNav.appendChild(iconEditionModNav);
 
   //Ajout du boutton à l'élément parent
   editionModNav.appendChild(buttonEditionModNav);
+
+  //sélection du lien login
+  const loginLink = document.getElementById("login-link");
+
+  // Création d'un nouveau lien logout
+  const logoutLink = document.createElement("a");
+  loginLink.href = "#";
+  logoutLink.innerText = "logout";
+
+  //remplacement du lien Login par Logout
+  loginLink.replaceWith(logoutLink);
+
+  //Création du listener pour le logout
+  logoutLink.addEventListener("click", function () {
+    //supression du token
+    localStorage.removeItem("token");
+    //actualisation de la page
+    window.location.reload();
+  });
 } else {
   console.log("le token n'existe pas");
 }
