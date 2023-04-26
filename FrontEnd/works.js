@@ -33,6 +33,44 @@ if (token) {
   //placer l'image avant le button
   // bodyElement.insertBefore(iconEditionModNav, buttonEditionModNav);
 
+  //Création du message "modifier" et de l'icone "edit" qui le précéde (INTRODUCTION)
+  const iconEditionModIntroduction = document.createElement("img");
+  iconEditionModIntroduction.src = "./assets/icons/icon-edit-archiwebos.png";
+  const modifierEditionModIntroduction = document.createElement("a");
+  modifierEditionModIntroduction.href = "#";
+  modifierEditionModIntroduction.innerText = "modifier";
+
+  //Ajout d'un id à l'icone:
+  iconEditionModIntroduction.id = "icon-introduction";
+
+  //Sélection de l'élément parent
+  const figureIntroduction = document.querySelector("#introduction figure");
+
+  //Affichage des éléments dans le parent
+  figureIntroduction.appendChild(iconEditionModIntroduction);
+  figureIntroduction.appendChild(modifierEditionModIntroduction);
+
+  //Création de l'icone "edit" et du message modifier (PROJET)
+  const iconEditionModProjet = document.createElement("img");
+  iconEditionModProjet.src = "./assets/icons/icon-edit-archiwebos.png";
+  const modifierEditionModProjet = document.createElement("a");
+  modifierEditionModProjet.href = "#";
+  modifierEditionModProjet.innerText = "modifier";
+
+  //Ajout d'un id à l'icone
+  iconEditionModProjet.id = "icon-projet";
+
+  //Séléction des éléments parents
+  const projetElement = document.querySelector("#portfolio");
+  const filterElement = document.querySelector(".filter");
+
+  //Affichage de l'icon-projet dans l'element parent (inutile car insetBefore le fait)
+  // projetElement.appendChild(iconEditionModProjet);
+
+  //On place l'icon-projet et le message modifier avant le filter
+  projetElement.insertBefore(iconEditionModProjet, filterElement);
+  projetElement.insertBefore(modifierEditionModProjet, filterElement);
+
   //Ajout de l'icone à lélément parent
   editionModNav.appendChild(iconEditionModNav);
 
