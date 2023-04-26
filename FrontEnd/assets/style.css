@@ -473,3 +473,50 @@ footer nav {
   margin-top: 16px;
   margin-right: 10px;
 }
+
+/* introduction mod edition */
+
+#introduction figure #icon-introduction {
+  width: 27px;
+  /* border: 2px solid red; */
+  position: relative;
+  right: 5px;
+  margin-top: 4px;
+}
+
+#introduction figure #icon-introduction:hover {
+  transform: scale(1.2);
+}
+
+#introduction figure a {
+  position: relative;
+  bottom: 6.5px;
+  text-decoration: none;
+  color: black;
+}
+
+/* Projet mod edition */
+
+#portfolio #icon-projet {
+  width: 27px;
+  position: relative;
+  left: 680px;
+  bottom: 57px;
+}
+
+#portfolio #icon-projet:hover {
+  transform: scale(1.2);
+}
+
+#portfolio a {
+  position: relative;
+  left: 685px;
+  bottom: 63px;
+  text-decoration: none;
+  color: black;
+}
+
+#portfolio a:hover,
+#introduction figure a:hover {
+  font-weight: bolder;
+}
