@@ -488,11 +488,16 @@ footer nav {
   transform: scale(1.2);
 }
 
-#introduction figure a {
+#introduction figure #btn-modifier-introduction {
   position: relative;
   bottom: 6.5px;
-  text-decoration: none;
   color: black;
+  border: none;
+  background-color: transparent;
+}
+
+#introduction figure #btn-modifier-introduction:hover {
+  color: #1d6154;
 }
 
 /* Projet mod edition */
@@ -508,15 +513,55 @@ footer nav {
   transform: scale(1.2);
 }
 
-#portfolio a {
+#portfolio #btn-modifier-projet {
   position: relative;
   left: 685px;
   bottom: 63px;
-  text-decoration: none;
   color: black;
+  border: none;
+  background-color: transparent;
 }
 
-#portfolio a:hover,
-#introduction figure a:hover {
-  font-weight: bolder;
+/* Animation (optionnelle) à présenter a Madame BLUEL */
+
+.mon-animation {
+  position: relative;
+}
+
+.mon-animation::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 55px;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-right: 6px solid #1d6154;
+  animation: fleche 1s linear infinite;
+  transform: translateY(-50%);
+  opacity: 0;
+}
+
+@keyframes fleche {
+  0% {
+    transform: translateX(10px) translateY(-6px);
+    opacity: 1;
+  }
+  20% {
+    transform: translateX(10px) translateY(-6px);
+  }
+  40% {
+    transform: translateX(10px) translateY(-6px);
+  }
+  60% {
+    transform: translateX(10px) translateY(-6px);
+  }
+  80% {
+    transform: translateX(10px) translateY(-6px);
+  }
+  100% {
+    transform: translateX(10px) translateY(-6px);
+    opacity: 0;
+  }
 }

@@ -36,12 +36,12 @@ if (token) {
   //Création du message "modifier" et de l'icone "edit" qui le précéde (INTRODUCTION)
   const iconEditionModIntroduction = document.createElement("img");
   iconEditionModIntroduction.src = "./assets/icons/icon-edit-archiwebos.png";
-  const modifierEditionModIntroduction = document.createElement("a");
-  modifierEditionModIntroduction.href = "#";
-  modifierEditionModIntroduction.innerText = "modifier";
+  const modifierEditionModIntroduction = document.createElement("button");
+  modifierEditionModIntroduction.innerText = "Modifier";
 
-  //Ajout d'un id à l'icone:
+  //Ajout d'un id à l'icone et au bouton:
   iconEditionModIntroduction.id = "icon-introduction";
+  modifierEditionModIntroduction.id = "btn-modifier-introduction";
 
   //Sélection de l'élément parent
   const figureIntroduction = document.querySelector("#introduction figure");
@@ -53,12 +53,12 @@ if (token) {
   //Création de l'icone "edit" et du message modifier (PROJET)
   const iconEditionModProjet = document.createElement("img");
   iconEditionModProjet.src = "./assets/icons/icon-edit-archiwebos.png";
-  const modifierEditionModProjet = document.createElement("a");
-  modifierEditionModProjet.href = "#";
-  modifierEditionModProjet.innerText = "modifier";
+  const modifierEditionModProjet = document.createElement("button");
+  modifierEditionModProjet.innerText = "Modifier";
 
-  //Ajout d'un id à l'icone
+  //Ajout d'un id à l'icone et du bouton
   iconEditionModProjet.id = "icon-projet";
+  modifierEditionModProjet.id = "btn-modifier-projet";
 
   //Séléction des éléments parents
   const projetElement = document.querySelector("#portfolio");
@@ -70,6 +70,30 @@ if (token) {
   //On place l'icon-projet et le message modifier avant le filter
   projetElement.insertBefore(iconEditionModProjet, filterElement);
   projetElement.insertBefore(modifierEditionModProjet, filterElement);
+
+  //Ajout d'un listener pour déclencher une animation au survol des boutton modifier (INTRODUCTION)
+  const boutonIntroduction = document.getElementById(
+    "btn-modifier-introduction"
+  );
+
+  boutonIntroduction.addEventListener("mouseover", () => {
+    boutonIntroduction.classList.add("mon-animation");
+  });
+
+  boutonIntroduction.addEventListener("animationend", () => {
+    boutonIntroduction.classList.remove("mon-animation");
+  });
+
+  //Ajout d'un listener pour déclencher une animation au survol des boutton modifier (PROJET)
+  const boutonProjet = document.getElementById("btn-modifier-projet");
+
+  boutonProjet.addEventListener("mouseover", () => {
+    boutonProjet.classList.add("mon-animation");
+  });
+
+  boutonProjet.addEventListener("animationend", () => {
+    boutonProjet.classList.remove("mon-animation");
+  });
 
   //Ajout de l'icone à lélément parent
   editionModNav.appendChild(iconEditionModNav);
