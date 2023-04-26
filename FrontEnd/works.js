@@ -37,7 +37,7 @@ if (token) {
   const iconEditionModIntroduction = document.createElement("img");
   iconEditionModIntroduction.src = "./assets/icons/icon-edit-archiwebos.png";
   const modifierEditionModIntroduction = document.createElement("button");
-  modifierEditionModIntroduction.innerText = "Modifier";
+  modifierEditionModIntroduction.innerText = "modifier";
 
   //Ajout d'un id à l'icone et au bouton:
   iconEditionModIntroduction.id = "icon-introduction";
@@ -54,7 +54,7 @@ if (token) {
   const iconEditionModProjet = document.createElement("img");
   iconEditionModProjet.src = "./assets/icons/icon-edit-archiwebos.png";
   const modifierEditionModProjet = document.createElement("button");
-  modifierEditionModProjet.innerText = "Modifier";
+  modifierEditionModProjet.innerText = "modifier";
 
   //Ajout d'un id à l'icone et du bouton
   iconEditionModProjet.id = "icon-projet";
