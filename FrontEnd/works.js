@@ -3,6 +3,9 @@ const token = localStorage.getItem("token");
 
 // ajout de la condition si token existe
 if (token) {
+  // retrait du filter en mode édition
+  document.querySelector(".filter").style.display = "none";
+
   // Navbar du mod Edition
   const editionModNav = document.createElement("div");
   editionModNav.innerHTML = "";
@@ -71,7 +74,7 @@ if (token) {
   projetElement.insertBefore(iconEditionModProjet, filterElement);
   projetElement.insertBefore(modifierEditionModProjet, filterElement);
 
-  //Ajout d'un listener pour déclencher une animation au survol des boutton modifier (INTRODUCTION)
+  //Ajout d'un listener pour déclencher une animation au survol du boutton modifier (INTRODUCTION)
   const boutonIntroduction = document.getElementById(
     "btn-modifier-introduction"
   );
@@ -84,7 +87,7 @@ if (token) {
     boutonIntroduction.classList.remove("mon-animation");
   });
 
-  //Ajout d'un listener pour déclencher une animation au survol des boutton modifier (PROJET)
+  //Ajout d'un listener pour déclencher une animation au survol du boutton modifier (PROJET)
   const boutonProjet = document.getElementById("btn-modifier-projet");
 
   boutonProjet.addEventListener("mouseover", () => {
@@ -170,6 +173,7 @@ for (const button of buttons) {
 
 //Ajout du Listener pour afficher tous les projets (Tous)
 const bouttonFilterTous = document.querySelector(".btn-tous");
+bouttonFilterTous.classList.add("active");
 bouttonFilterTous.addEventListener("click", function () {
   const filterTous = works.filter(function (objet) {
     return objet.category.name;
