@@ -565,3 +565,31 @@ footer nav {
     opacity: 0;
   }
 }
+
+/* modale gallery */
+
+.modal-container-gallery {
+  border: 2px solid black;
+  width: 500px;
+  height: 600px;
+  margin-left: 350px;
+height: 300px;
+
+}
+
+.js-modal-gallery {
+  border: 2px solid red;
+  height: 420px;
+  width: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+}
+
+.js-modal-gallery img {
+  width: 50px;
+  
+  flex-basis: calc(20% - 5px);
+  margin-bottom: 20px;
+}
