@@ -122,6 +122,61 @@ if (token) {
     //actualisation de la page
     window.location.reload();
   });
+
+  //création de la fenêtre modale pour la partie PROJET
+  const modal = document.createElement("aside");
+  modal.classList.add("modal");
+  modal.setAttribute("aria-hidden", "true");
+  modal.setAttribute("role", "region");
+  modal.setAttribute(
+    "aria-label",
+    "Fenêtre modale pour la galerie des projets"
+  );
+  // modal.style.display = "none";
+
+  //Séléction des éléments parents
+  const galleryElement = document.querySelector(".gallery");
+
+  //On place la balise aside et son contenue juste avant la div gallery
+  projetElement.insertBefore(modal, galleryElement);
+
+  //Création de la div qui contidendra l'ensemble des éléments du modal
+  const modalContainer = document.createElement("div");
+  modalContainer.classList.add("modal-container-gallery", "js-modal-stop");
+  modal.appendChild(modalContainer);
+
+  //Création du boutton close X de la modal
+  const modalButtonClose = document.createElement("button");
+  modalButtonClose.innerText = "x";
+  modal.classList.add("js-modal-close");
+  modalContainer.appendChild(modalButtonClose);
+
+  //Création du titre la modale
+  const titleModalGallery = document.createElement("h4");
+  titleModalGallery.innerText = "Galerie photo";
+  modalContainer.appendChild(titleModalGallery);
+
+  //Création de la div qui contiendra les images des projets
+  const modalGallery = document.createElement("div");
+  modalGallery.classList.add("js-modal-gallery");
+  modalContainer.appendChild(modalGallery);
+
+  // Fonction pour générer la galerie modale
+  function generateModalGallery(works) {
+    for (let i = 0; i < works.length; i++) {
+      const modalProjet = works[i];
+      const imageElementModal = document.createElement("img");
+      imageElementModal.src = modalProjet.imageUrl;
+      modalGallery.appendChild(imageElementModal);
+    }
+  }
+
+  // Récupération des works depuis le serveur web
+  const reponse = await fetch("http://localhost:5678/api/works");
+  const works = await reponse.json();
+
+  // Génération de la galerie modale avec les données des projets récupérées
+  generateModalGallery(works);
 } else {
   console.log("le token n'existe pas");
 }
