@@ -147,9 +147,14 @@ if (token) {
 
   //Création du boutton close X de la modal
   const modalButtonClose = document.createElement("button");
-  modalButtonClose.innerText = "x";
-  modal.classList.add("js-modal-close");
+  // modalButtonClose.innerText = "x";
+  modalButtonClose.classList.add("js-modal-close");
   modalContainer.appendChild(modalButtonClose);
+
+  //Ajout de l'icone X font Awesome au bouton
+  const closeButtonIcon = document.createElement("i");
+  closeButtonIcon.classList.add("fa", "fa-xmark");
+  modalButtonClose.appendChild(closeButtonIcon);
 
   //Création du titre la modale
   const titleModalGallery = document.createElement("h4");
@@ -161,13 +166,26 @@ if (token) {
   modalGallery.classList.add("js-modal-gallery");
   modalContainer.appendChild(modalGallery);
 
+  //vréation de la div qui contiendra le message "Editer"
+
   // Fonction pour générer la galerie modale
   function generateModalGallery(works) {
     for (let i = 0; i < works.length; i++) {
       const modalProjet = works[i];
+      // Création d'une div pour chaque paire d'image et de message "Éditer"
+      const imageWrapper = document.createElement("div");
+      imageWrapper.classList.add("image-wrapper");
+
       const imageElementModal = document.createElement("img");
       imageElementModal.src = modalProjet.imageUrl;
-      modalGallery.appendChild(imageElementModal);
+
+      const modalEditerMessage = document.createElement("p");
+      modalEditerMessage.classList.add("editer-message");
+      modalEditerMessage.innerText = "éditer";
+
+      imageWrapper.appendChild(imageElementModal);
+      imageWrapper.appendChild(modalEditerMessage);
+      modalGallery.appendChild(imageWrapper);
     }
   }
 
@@ -177,6 +195,13 @@ if (token) {
 
   // Génération de la galerie modale avec les données des projets récupérées
   generateModalGallery(works);
+
+  //Ajout du bouton "Ajouter une photo"
+  const addPhotoButton = document.createElement("button");
+  addPhotoButton.innerText="Ajouter une photo";
+  addPhotoButton.classList.add("btn-add-photo");
+  modalContainer.appendChild(addPhotoButton);
+
 } else {
   console.log("le token n'existe pas");
 }
