@@ -634,3 +634,31 @@ footer nav {
   font-size: 12px;
   /* font-weight: bold; */
 }
+
+.modal-button-container {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-button-container button {
+  width: 237px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-add-photo {
+  border-radius: 60px;
+  background-color: rgb(29, 97, 84);
+  color: white;
+  height: 36px;
+  margin-bottom: 23px;
+  border: none;
+  font-size: 14px;
+}
+
+.btn-delete-gallery {
+  border: none;
+  background-color: transparent;
+  color: red;
+}
