@@ -2,7 +2,9 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
+html {
+  font-family: "Work Sans";
+}
 body {
   background-color: rgb(255, 254, 248);
 }
@@ -589,12 +591,16 @@ footer nav {
   border: none;
 }
 
+.js-modal-close:hover {
+  transform: scale(1.2);
+}
+
 .modal-container-gallery h4 {
   font-size: 26px;
   /* border: 2px solid blue; */
   display: flex;
   justify-content: center;
-  margin-top: 5px;
+  
   font-weight: 500;
 }
 
@@ -623,8 +629,16 @@ footer nav {
 .js-modal-gallery img {
   width: 76.86px;
   height: 102.57px;
+  margin-bottom: 1px;
   /* height: 80px; */
   /* object-fit: cover; */
+  
+}
+
+.js-modal-gallery img:hover {
+  transform: scale(1.1);
+  /* border:1px solid #1d6154; */
+  box-shadow: 1px 1px 5px grey ;
 }
 
 .js-modal-gallery .editer-message {
@@ -645,6 +659,7 @@ footer nav {
   width: 237px;
   margin-left: auto;
   margin-right: auto;
+  font-family: "Work Sans";
 }
 
 .btn-add-photo {
@@ -657,8 +672,17 @@ footer nav {
   font-size: 14px;
 }
 
+.btn-add-photo:hover {
+  background-color:rgb(14,47,40) ;
+}
+
 .btn-delete-gallery {
   border: none;
   background-color: transparent;
   color: red;
+  
+}
+
+.btn-delete-gallery:hover{
+  color:rgb(111,8,0) ;
 }
