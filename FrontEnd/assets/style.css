@@ -570,26 +570,67 @@ footer nav {
 
 .modal-container-gallery {
   border: 2px solid black;
-  width: 500px;
-  height: 600px;
+  width: 630px;
+  border-radius: 10px;
   margin-left: 350px;
-height: 300px;
+  height: 731px;
+  /* margin-bottom: 100px; */
+  /* padding-left: 10px; */
 
+  background-color: white;
+}
+
+.modal-container-gallery .js-modal-close {
+  background-color: transparent;
+  font-size: 20px;
+  margin-left: 580px;
+  /* font-weight: bold; */
+  margin-top: 26px;
+  border: none;
+}
+
+.modal-container-gallery h4 {
+  font-size: 26px;
+  /* border: 2px solid blue; */
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  font-weight: 500;
 }
 
 .js-modal-gallery {
-  border: 2px solid red;
-  height: 420px;
-  width: 500px;
+  /* border: 1px solid red; */
+  /* height: 420px; */
+  width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  padding-left: 0px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #b3b3b3;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
+}
+
+.image-wrapper {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  
+  flex-direction: column;
+  /* align-items: center; */
 }
 
 .js-modal-gallery img {
-  width: 50px;
-  
-  flex-basis: calc(20% - 5px);
-  margin-bottom: 20px;
+  width: 76.86px;
+  height: 102.57px;
+  /* height: 80px; */
+  /* object-fit: cover; */
+}
+
+.js-modal-gallery .editer-message {
+  margin-top: 0px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  font-size: 12px;
+  /* font-weight: bold; */
 }
