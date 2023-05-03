@@ -195,12 +195,23 @@ if (token) {
 
   // Génération de la galerie modale avec les données des projets récupérées
   generateModalGallery(works);
-
+  
+  //Ajout d'une div pour y placer les bouton add et delete du modal
+  const buttonModalContainer = document.createElement("div");
+  buttonModalContainer.classList.add("modal-button-container")
+  modalContainer.appendChild(buttonModalContainer);
+  
   //Ajout du bouton "Ajouter une photo"
   const addPhotoButton = document.createElement("button");
   addPhotoButton.innerText="Ajouter une photo";
   addPhotoButton.classList.add("btn-add-photo");
-  modalContainer.appendChild(addPhotoButton);
+  buttonModalContainer.appendChild(addPhotoButton);
+
+  //Ajout du bouton "supprimer la galerie"
+  const addButtonDeleteGallery = document.createElement("button");
+  addButtonDeleteGallery.innerText="Supprimer la galerie";
+  addButtonDeleteGallery.classList.add("btn-delete-gallery");
+  buttonModalContainer.appendChild(addButtonDeleteGallery);
 
 } else {
   console.log("le token n'existe pas");
