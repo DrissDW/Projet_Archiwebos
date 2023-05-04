@@ -127,12 +127,25 @@ if (token) {
   const modal = document.createElement("aside");
   modal.classList.add("modal");
   modal.setAttribute("aria-hidden", "true");
-  modal.setAttribute("role", "region");
+  modal.setAttribute("role", "dialog");
   modal.setAttribute(
     "aria-label",
     "Fenêtre modale pour la galerie des projets"
   );
-  // modal.style.display = "none";
+  modal.style.display = "none";
+
+  //Ajout du listener pour l'ouverture de la fenetre modale quand on clique sur le bouton btn-modifier projet
+  
+    
+    
+    boutonProjet.addEventListener("click", function (event) {
+      event.preventDefault();
+      
+      modal.style.display = "block";
+      modal.setAttribute("aria-hidden", "false");
+      modal.setAttribute("aria-modal", "true");
+    });
+  
 
   //Séléction des éléments parents
   const galleryElement = document.querySelector(".gallery");
@@ -166,8 +179,6 @@ if (token) {
   modalGallery.classList.add("js-modal-gallery");
   modalContainer.appendChild(modalGallery);
 
-  //vréation de la div qui contiendra le message "Editer"
-
   // Fonction pour générer la galerie modale
   function generateModalGallery(works) {
     for (let i = 0; i < works.length; i++) {
@@ -183,10 +194,42 @@ if (token) {
       modalEditerMessage.classList.add("editer-message");
       modalEditerMessage.innerText = "éditer";
 
+      const modalDeleteIcon = document.createElement("i");
+      modalDeleteIcon.classList.add("fa", "fa-trash", "icon-delete-photo");
+
+      const modalMoveIcon = document.createElement("i");
+      modalMoveIcon.classList.add(
+        "fa",
+        "fa-arrows-up-down-left-right",
+        "move-icon"
+      );
+
       imageWrapper.appendChild(imageElementModal);
       imageWrapper.appendChild(modalEditerMessage);
+      imageWrapper.appendChild(modalDeleteIcon);
+      imageWrapper.appendChild(modalMoveIcon);
       modalGallery.appendChild(imageWrapper);
+
+      //on cache l'icône move-edit par défaut
+      modalMoveIcon.style.display = "none";
+
+      //Ajout d'un listner au survol de l'image pour faire apparaitre l'icone move
+      imageElementModal.addEventListener("mouseover", function () {
+        //on affiche l'icone en hover
+        modalMoveIcon.style.display = "block";
+      });
+
+      //Ajout d'un listener qui masque l'icone quand la souris n'est plus sur l'image sélectionné
+      imageElementModal.addEventListener("mouseout", function () {
+        modalMoveIcon.style.display = "none";
+      });
     }
+    //Ajout d'un listener au bouton x pour la fermeture du modale
+    modalButtonClose.addEventListener("click", function () {
+      modal.style.display = "none";
+      modalButtonClose.setAttribute("aria-hidden", "true");
+      modal.removeAttribute("arial-modal");
+    });
   }
 
   // Récupération des works depuis le serveur web
@@ -195,24 +238,23 @@ if (token) {
 
   // Génération de la galerie modale avec les données des projets récupérées
   generateModalGallery(works);
-  
+
   //Ajout d'une div pour y placer les bouton add et delete du modal
   const buttonModalContainer = document.createElement("div");
-  buttonModalContainer.classList.add("modal-button-container")
+  buttonModalContainer.classList.add("modal-button-container");
   modalContainer.appendChild(buttonModalContainer);
-  
+
   //Ajout du bouton "Ajouter une photo"
   const addPhotoButton = document.createElement("button");
-  addPhotoButton.innerText="Ajouter une photo";
+  addPhotoButton.innerText = "Ajouter une photo";
   addPhotoButton.classList.add("btn-add-photo");
   buttonModalContainer.appendChild(addPhotoButton);
 
   //Ajout du bouton "supprimer la galerie"
   const addButtonDeleteGallery = document.createElement("button");
-  addButtonDeleteGallery.innerText="Supprimer la galerie";
+  addButtonDeleteGallery.innerText = "Supprimer la galerie";
   addButtonDeleteGallery.classList.add("btn-delete-gallery");
   buttonModalContainer.appendChild(addButtonDeleteGallery);
-
 } else {
   console.log("le token n'existe pas");
 }
