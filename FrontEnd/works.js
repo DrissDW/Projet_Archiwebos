@@ -135,17 +135,14 @@ if (token) {
   modal.style.display = "none";
 
   //Ajout du listener pour l'ouverture de la fenetre modale quand on clique sur le bouton btn-modifier projet
-  
-    
-    
-    boutonProjet.addEventListener("click", function (event) {
-      event.preventDefault();
-      
-      modal.style.display = "block";
-      modal.setAttribute("aria-hidden", "false");
-      modal.setAttribute("aria-modal", "true");
-    });
-  
+
+  boutonProjet.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    modal.style.display = "block";
+    modal.setAttribute("aria-hidden", "false");
+    modal.setAttribute("aria-modal", "true");
+  });
 
   //Séléction des éléments parents
   const galleryElement = document.querySelector(".gallery");
@@ -230,6 +227,17 @@ if (token) {
       modalButtonClose.setAttribute("aria-hidden", "true");
       modal.removeAttribute("arial-modal");
     });
+
+    //Ajout d'un listner pour la fermeture du modal quand on clique en dehors du modale
+    document
+      .querySelector(".modal")
+      .addEventListener("click", function (event) {
+        if (event.target === modal) {
+          modal.style.display = "none";
+          modalButtonClose.setAttribute("aria-hidden", "true");
+          modal.removeAttribute("arial-modal");
+        }
+      });
   }
 
   // Récupération des works depuis le serveur web
