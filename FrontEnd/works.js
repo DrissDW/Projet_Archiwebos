@@ -139,9 +139,11 @@ if (token) {
   boutonProjet.addEventListener("click", function (event) {
     event.preventDefault();
 
-    modal.style.display = "block";
-    modal.setAttribute("aria-hidden", "false");
-    modal.setAttribute("aria-modal", "true");
+    if (modal.style.display != "block") {
+      modal.style.display = "block";
+      modal.setAttribute("aria-hidden", "false");
+      modal.setAttribute("aria-modal", "true");
+    }
   });
 
   //Séléction des éléments parents
