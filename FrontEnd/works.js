@@ -349,3 +349,15 @@ bouttonFilterAppartements.addEventListener("click", function () {
   document.querySelector(".gallery").innerHTML = "";
   generateProjects(filterAppartements);
 });
+
+//Ajout du listener pour filtrer les projets qui on pour catégorie "Hotels & restaurants"
+const bouttonFilterHotelRestaurant = document.querySelector(".btn-hotels-restaurants");
+bouttonFilterHotelRestaurant.addEventListener("click", function () {
+  const filterHotelRestaurant = works.filter(function (objet){
+    return objet.category.name ==="Hotels & restaurants";
+  })
+
+  // effacement de l'écran et régénération de la page
+  document.querySelector(".gallery").innerHTML = "";
+  generateProjects(filterHotelRestaurant);
+})
