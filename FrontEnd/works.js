@@ -178,10 +178,38 @@ if (token) {
   modalGallery.classList.add("js-modal-gallery");
   modalContainer.appendChild(modalGallery);
 
+  //ajout fonction deletImage
+  async function deleteImage(imageId) {
+    try {
+      const response = await fetch(`http://localhost:5678/api/works/${imageId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+      });
+  
+      if (!response.ok) {
+        alert(`Une erreur est survenue: ${response.statusText}`);
+      }
+
+      else{
+
+         await response.json();
+         return true;
+      }
+  
+
+    } catch (error) {
+      console.log("Erreur lors de la suppression de l'image:", error);
+    }
+  }
+
   // Fonction pour générer la galerie modale
   function generateModalGallery(works) {
     for (let i = 0; i < works.length; i++) {
       const modalProjet = works[i];
+      const id = works[i].id;
       // Création d'une div pour chaque paire d'image et de message "Éditer"
       const imageWrapper = document.createElement("div");
       imageWrapper.classList.add("image-wrapper");
@@ -203,11 +231,40 @@ if (token) {
         "move-icon"
       );
 
+      imageWrapper.setAttribute("data-id", id);
+      modalDeleteIcon.setAttribute("data-id", id);
       imageWrapper.appendChild(imageElementModal);
       imageWrapper.appendChild(modalEditerMessage);
       imageWrapper.appendChild(modalDeleteIcon);
       imageWrapper.appendChild(modalMoveIcon);
       modalGallery.appendChild(imageWrapper);
+
+
+      
+      
+
+      //ajout d'un listener a l'icone trash pour supprimer une image
+
+      modalDeleteIcon.addEventListener("click", async function (e) {
+
+        e.preventDefault();
+        // const buttonId = modalDeleteIcon.getAttribute("data-id");
+        const imageId = imageWrapper.getAttribute("data-id");
+        const imageElement = document.querySelector('img[data-id="${imageId}"]');
+
+
+        const ImageApiDeleteSucces = await deleteImage(imageId); 
+
+        if(ImageApiDeleteSucces && imageElement){
+          imageElement.remove();
+        }
+        
+        
+        // const id = event.target.dataset.id; 
+        // console.log("tu as clik sur le bouton ");
+        // console.log("l'ID de ton bouton est :" + buttonId);
+        // console.log("La valeur de data-id est :" + imageId);
+      });
 
       //on cache l'icône move-edit par défaut
       modalMoveIcon.style.display = "none";
@@ -260,11 +317,73 @@ if (token) {
   addPhotoButton.classList.add("btn-add-photo");
   buttonModalContainer.appendChild(addPhotoButton);
 
+  //Ajout du listner au bouton "ajouter une photo" pour fermer cette fenetre modale et en ouvrir une autre
+  addPhotoButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    if (modal2.style.display != "block") {
+      modal2.style.display = "block";
+      modal2.setAttribute("aria-hidden", "false");
+      modal2.setAttribute("aria-modal", "true");
+    }
+  });
   //Ajout du bouton "supprimer la galerie"
   const addButtonDeleteGallery = document.createElement("button");
   addButtonDeleteGallery.innerText = "Supprimer la galerie";
   addButtonDeleteGallery.classList.add("btn-delete-gallery");
   buttonModalContainer.appendChild(addButtonDeleteGallery);
+
+  //Création d'une nouvelle fenetre modale pour "ajout dune photo"
+  const modal2 = document.createElement("aside");
+  modal2.classList.add("modal2");
+  modal2.setAttribute("aria-hidden", "true");
+  modal2.setAttribute("role", "dialog");
+  modal2.setAttribute(
+    "aria-label",
+    "Fenêtre modale pour l'ajout de projet"
+  );
+   modal2.style.display = "block";
+    //Séléction des éléments parents
+  const galleryElement2 = document.querySelector(".gallery");
+
+  //On place la balise aside et son contenue juste avant la div gallery
+  projetElement.insertBefore(modal2, galleryElement);
+
+   //Création de la div qui contidendra l'ensemble des éléments du modal
+   const modalContainerAddProjet = document.createElement("div");
+   modalContainerAddProjet.classList.add("modal-container-add-projet", "js-modal-add-stop");
+   modal2.appendChild(modalContainerAddProjet);
+
+   //Création du boutton précédent <-
+   const modal2ButtonBefore = document.createElement("button");
+   modal2ButtonBefore.innerText="<";
+   modal2ButtonBefore.classList.add("modal-button-before");
+   modalContainerAddProjet.appendChild(modal2ButtonBefore);
+
+   
+ 
+   //Création du boutton close X de la modal
+    const modal2ButtonClose = document.createElement("button");
+    modal2ButtonClose.innerText = "";
+    modal2ButtonClose.classList.add("js-modal2-close");
+    modalContainerAddProjet.appendChild(modal2ButtonClose);
+ 
+   //Ajout de l'icone X font Awesome au bouton
+     const closeButtonIconModal2 = document.createElement("i");
+     closeButtonIconModal2.classList.add("fa", "fa-xmark", "icon-close-2");
+     modal2ButtonClose.appendChild(closeButtonIconModal2);
+ 
+   //Création du titre la modale
+   const titleModalAddProjet = document.createElement("h4");
+   titleModalAddProjet.innerText = "Ajout photo";
+   modalContainerAddProjet.appendChild(titleModalAddProjet);
+ 
+   //Création de la div qui contiendra les images des projets
+  //  const modalGallery = document.createElement("div");
+  //  modalGallery.classList.add("js-modal-gallery");
+  //  modalContainer.appendChild(modalGallery);
+ 
+
 } else {
   console.log("le token n'existe pas");
 }
@@ -351,13 +470,15 @@ bouttonFilterAppartements.addEventListener("click", function () {
 });
 
 //Ajout du listener pour filtrer les projets qui on pour catégorie "Hotels & restaurants"
-const bouttonFilterHotelRestaurant = document.querySelector(".btn-hotels-restaurants");
+const bouttonFilterHotelRestaurant = document.querySelector(
+  ".btn-hotels-restaurants"
+);
 bouttonFilterHotelRestaurant.addEventListener("click", function () {
-  const filterHotelRestaurant = works.filter(function (objet){
-    return objet.category.name ==="Hotels & restaurants";
-  })
+  const filterHotelRestaurant = works.filter(function (objet) {
+    return objet.category.name === "Hotels & restaurants";
+  });
 
   // effacement de l'écran et régénération de la page
   document.querySelector(".gallery").innerHTML = "";
   generateProjects(filterHotelRestaurant);
-})
+});
