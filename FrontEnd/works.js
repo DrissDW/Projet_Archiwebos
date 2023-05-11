@@ -342,7 +342,7 @@ if (token) {
     "aria-label",
     "Fenêtre modale pour l'ajout de projet"
   );
-   modal2.style.display = "block";
+   modal2.style.display = "none";
     //Séléction des éléments parents
   const galleryElement2 = document.querySelector(".gallery");
 
@@ -376,6 +376,14 @@ if (token) {
      closeButtonIconModal2.classList.add("fa", "fa-xmark", "icon-close-2");
      modal2ButtonClose.appendChild(closeButtonIconModal2);
  
+  // Ajout un listener au bouton X pour fermer la modal2
+  modal2ButtonClose.addEventListener("click",function(){
+    
+    modal2.style.display = "none";
+    modal2ButtonClose.setAttribute("aria-hidden", "true");
+    modal2.removeAttribute("arial-modal");
+  });
+
    //Création du titre la modale
    const titleModalAddProjet = document.createElement("h4");
    titleModalAddProjet.innerText = "Ajout photo";
