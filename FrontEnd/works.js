@@ -181,25 +181,23 @@ if (token) {
   //ajout fonction deletImage
   async function deleteImage(imageId) {
     try {
-      const response = await fetch(`http://localhost:5678/api/works/${imageId}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
-        },
-      });
-  
+      const response = await fetch(
+        `http://localhost:5678/api/works/${imageId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
       if (!response.ok) {
         alert(`Une erreur est survenue: ${response.statusText}`);
+      } else {
+        await response.json();
+        return true;
       }
-
-      else{
-
-         await response.json();
-         return true;
-      }
-  
-
     } catch (error) {
       console.log("Erreur lors de la suppression de l'image:", error);
     }
@@ -239,28 +237,23 @@ if (token) {
       imageWrapper.appendChild(modalMoveIcon);
       modalGallery.appendChild(imageWrapper);
 
-
-      
-      
-
       //ajout d'un listener a l'icone trash pour supprimer une image
 
       modalDeleteIcon.addEventListener("click", async function (e) {
-
         e.preventDefault();
         // const buttonId = modalDeleteIcon.getAttribute("data-id");
         const imageId = imageWrapper.getAttribute("data-id");
-        const imageElement = document.querySelector('img[data-id="${imageId}"]');
+        const imageElement = document.querySelector(
+          'img[data-id="${imageId}"]'
+        );
 
+        const ImageApiDeleteSucces = await deleteImage(imageId);
 
-        const ImageApiDeleteSucces = await deleteImage(imageId); 
-
-        if(ImageApiDeleteSucces && imageElement){
+        if (ImageApiDeleteSucces && imageElement) {
           imageElement.remove();
         }
-        
-        
-        // const id = event.target.dataset.id; 
+
+        // const id = event.target.dataset.id;
         // console.log("tu as clik sur le bouton ");
         // console.log("l'ID de ton bouton est :" + buttonId);
         // console.log("La valeur de data-id est :" + imageId);
@@ -320,6 +313,9 @@ if (token) {
   //Ajout du listner au bouton "ajouter une photo" pour fermer cette fenetre modale et en ouvrir une autre
   addPhotoButton.addEventListener("click", function (event) {
     event.preventDefault();
+    modal.style.display = "none";
+    modalButtonClose.setAttribute("aria-hidden", "true");
+    modal.removeAttribute("arial-modal");
 
     if (modal2.style.display != "block") {
       modal2.style.display = "block";
@@ -338,63 +334,86 @@ if (token) {
   modal2.classList.add("modal2");
   modal2.setAttribute("aria-hidden", "true");
   modal2.setAttribute("role", "dialog");
-  modal2.setAttribute(
-    "aria-label",
-    "Fenêtre modale pour l'ajout de projet"
-  );
-   modal2.style.display = "none";
-    //Séléction des éléments parents
+  modal2.setAttribute("aria-label", "Fenêtre modale pour l'ajout de projet");
+  modal2.style.display = "none";
+  //Séléction des éléments parents
   const galleryElement2 = document.querySelector(".gallery");
 
   //On place la balise aside et son contenue juste avant la div gallery
-  projetElement.insertBefore(modal2, galleryElement);
+  projetElement.insertBefore(modal2, galleryElement2);
 
-   //Création de la div qui contidendra l'ensemble des éléments du modal
-   const modalContainerAddProjet = document.createElement("div");
-   modalContainerAddProjet.classList.add("modal-container-add-projet", "js-modal-add-stop");
-   modal2.appendChild(modalContainerAddProjet);
+  //Création de la div qui contidendra l'ensemble des éléments du modal
+  const modalContainerAddProjet = document.createElement("div");
+  modalContainerAddProjet.classList.add(
+    "modal-container-add-projet",
+    "js-modal-add-stop"
+  );
+  modal2.appendChild(modalContainerAddProjet);
 
-   //Création du boutton précédent <-
-   const modal2ButtonBefore = document.createElement("button");
-   modal2ButtonBefore.innerText="";
-   modal2ButtonBefore.classList.add("modal-button-before");
-   modalContainerAddProjet.appendChild(modal2ButtonBefore);
+  //Création du boutton précédent <-
+  const modal2ButtonBefore = document.createElement("button");
+  modal2ButtonBefore.innerText = "";
+  modal2ButtonBefore.classList.add("modal-button-before");
+  modalContainerAddProjet.appendChild(modal2ButtonBefore);
 
-   // Ajout de l'icone <- font Awesome au bouton
-   const beforeButtonIconModal2 = document.createElement("i");
-   beforeButtonIconModal2.classList.add("fa", "fa-arrow-left", "icon-before-modal2");
-   modal2ButtonBefore.appendChild(beforeButtonIconModal2);
- 
-   //Création du boutton close X de la modal
-    const modal2ButtonClose = document.createElement("button");
-    modal2ButtonClose.innerText = "";
-    modal2ButtonClose.classList.add("js-modal2-close");
-    modalContainerAddProjet.appendChild(modal2ButtonClose);
- 
-   //Ajout de l'icone X font Awesome au bouton
-     const closeButtonIconModal2 = document.createElement("i");
-     closeButtonIconModal2.classList.add("fa", "fa-xmark", "icon-close-2");
-     modal2ButtonClose.appendChild(closeButtonIconModal2);
- 
+  // Ajout de l'icone <- font Awesome au bouton
+  const beforeButtonIconModal2 = document.createElement("i");
+  beforeButtonIconModal2.classList.add(
+    "fa",
+    "fa-arrow-left",
+    "icon-before-modal2"
+  );
+  modal2ButtonBefore.appendChild(beforeButtonIconModal2);
+
+  //Ajout du listener au bouton <- pour femr la modal2 et ouvrir la modale1
+  modal2ButtonBefore.addEventListener("click", function () {
+    //fermeture modal2
+    modal2.style.display = "none";
+    modal2ButtonClose.setAttribute("aria-hidden", "true");
+    modal2.removeAttribute("arial-modal");
+
+    // ouverture modal1
+    modal.style.display = "block";
+    modal.setAttribute("aria-hidden", "false");
+    modal.setAttribute("aria-modal", "true");
+  });
+
+  //Création du boutton close X de la modal
+  const modal2ButtonClose = document.createElement("button");
+  modal2ButtonClose.innerText = "";
+  modal2ButtonClose.classList.add("js-modal2-close");
+  modalContainerAddProjet.appendChild(modal2ButtonClose);
+
+  //Ajout de l'icone X font Awesome au bouton
+  const closeButtonIconModal2 = document.createElement("i");
+  closeButtonIconModal2.classList.add("fa", "fa-xmark", "icon-close-2");
+  modal2ButtonClose.appendChild(closeButtonIconModal2);
+
   // Ajout un listener au bouton X pour fermer la modal2
-  modal2ButtonClose.addEventListener("click",function(){
-    
+  modal2ButtonClose.addEventListener("click", function () {
     modal2.style.display = "none";
     modal2ButtonClose.setAttribute("aria-hidden", "true");
     modal2.removeAttribute("arial-modal");
   });
 
-   //Création du titre la modale
-   const titleModalAddProjet = document.createElement("h4");
-   titleModalAddProjet.innerText = "Ajout photo";
-   modalContainerAddProjet.appendChild(titleModalAddProjet);
- 
-   //Création de la div qui contiendra les images des projets
+  //Ajout d'un listner pour la fermeture du modal2 quand on clique en dehors du modale
+  document.querySelector(".modal2").addEventListener("click", function (event) {
+    if (event.target === modal2) {
+      modal2.style.display = "none";
+      modal2ButtonClose.setAttribute("aria-hidden", "true");
+      modal2.removeAttribute("arial-modal");
+    }
+  });
+
+  //Création du titre la modale
+  const titleModalAddProjet = document.createElement("h4");
+  titleModalAddProjet.innerText = "Ajout photo";
+  modalContainerAddProjet.appendChild(titleModalAddProjet);
+
+  //Création de la div qui contiendra les images des projets
   //  const modalGallery = document.createElement("div");
   //  modalGallery.classList.add("js-modal-gallery");
   //  modalContainer.appendChild(modalGallery);
- 
-
 } else {
   console.log("le token n'existe pas");
 }
