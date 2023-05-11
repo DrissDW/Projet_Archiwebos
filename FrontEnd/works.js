@@ -356,11 +356,14 @@ if (token) {
 
    //Création du boutton précédent <-
    const modal2ButtonBefore = document.createElement("button");
-   modal2ButtonBefore.innerText="<";
+   modal2ButtonBefore.innerText="";
    modal2ButtonBefore.classList.add("modal-button-before");
    modalContainerAddProjet.appendChild(modal2ButtonBefore);
 
-   
+   // Ajout de l'icone <- font Awesome au bouton
+   const beforeButtonIconModal2 = document.createElement("i");
+   beforeButtonIconModal2.classList.add("fa", "fa-arrow-left", "icon-before-modal2");
+   modal2ButtonBefore.appendChild(beforeButtonIconModal2);
  
    //Création du boutton close X de la modal
     const modal2ButtonClose = document.createElement("button");
