@@ -683,6 +683,7 @@ footer nav {
   flex-direction: column;
   height: 128px;
   /* align-items: center; */
+  /* border: 2px solid red; */
 }
 
 .js-modal-gallery img {
@@ -777,4 +778,76 @@ footer nav {
   padding-left: 4px;
   padding-right: 2px;
   border-radius: 3px;
+}
+
+/* modal add projet */
+.modal2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-container-add-projet {
+  overflow: auto;
+  /* border: 1px solid black; */
+  width: 630px;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 140px;
+  max-width: calc(100vw -20px);
+  max-height: calc(100vh -20px);
+
+  height: 670px;
+  /* display: flex; */
+
+  /* margin-bottom: 100px; */
+  /* padding-left: 10px; */
+
+  background-color: white;
+  animation: slideFromTop 1s both;
+}
+
+.js-modal2-close{
+  background-color: white;
+  font-size: 21px;
+  margin-left: 575px;
+  /* font-weight: bold; */
+  position: relative;
+  top: -25px;
+  border: none;
+  /* border: 2px solid red; */
+}
+
+.js-modal2-close:hover {
+  transform: scale(1.2);
+}
+
+.modal-container-add-projet h4 {
+  font-size: 26px;
+  /* border: 2px solid blue; */
+  display: flex;
+  justify-content: center;
+
+  font-weight: 500;
+}
+
+.modal-button-before{
+  background-color: white;
+  border: none;
+  /* width: 21px; */
+  /* height: 21px; */
+  font-size: 21px;
+  margin-top: 26px;
+  margin-left: 30px;
+}
+
+.modal-button-before:hover {
+  transform: scale(1.2);
 }
