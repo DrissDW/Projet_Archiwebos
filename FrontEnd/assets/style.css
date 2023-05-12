@@ -851,3 +851,25 @@ footer nav {
 .modal-button-before:hover {
   transform: scale(1.2);
 }
+
+#icone-image-modal2 {
+  width: 75px;
+  /* height: 65px; */
+  color:rgb(185,197,204) ;
+  margin-left:170px ;
+  /* margin-right:180px; */
+  margin-top: 22px;
+  /* border: 2px solid black; */
+  
+}
+
+.container-img-modal2 {
+  /* border: 2px solid black; */
+  width: 420px;
+  height: 169px;
+  border-radius: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 36px;
+  background-color:rgb(232,241,246) ;
+}
