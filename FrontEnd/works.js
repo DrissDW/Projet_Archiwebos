@@ -335,7 +335,7 @@ if (token) {
   modal2.setAttribute("aria-hidden", "true");
   modal2.setAttribute("role", "dialog");
   modal2.setAttribute("aria-label", "Fenêtre modale pour l'ajout de projet");
-  modal2.style.display = "none";
+  modal2.style.display = "block";
   //Séléction des éléments parents
   const galleryElement2 = document.querySelector(".gallery");
 
@@ -365,7 +365,7 @@ if (token) {
   );
   modal2ButtonBefore.appendChild(beforeButtonIconModal2);
 
-  //Ajout du listener au bouton <- pour femr la modal2 et ouvrir la modale1
+  //Ajout du listener au bouton <- pour femrer la modal2 et ouvrir la modale1
   modal2ButtonBefore.addEventListener("click", function () {
     //fermeture modal2
     modal2.style.display = "none";
@@ -409,6 +409,22 @@ if (token) {
   const titleModalAddProjet = document.createElement("h4");
   titleModalAddProjet.innerText = "Ajout photo";
   modalContainerAddProjet.appendChild(titleModalAddProjet);
+
+  //Création du formulaire pour la modal2
+  const FormModal2 = document.createElement("form");
+  FormModal2.id = "form-modal2";
+  modalContainerAddProjet.appendChild(FormModal2);
+
+  //Création de la div qui contiendra l'imaga du fichier chargé
+  const containerImageModal2 = document.createElement("div");
+  containerImageModal2.className="container-img-modal2";
+  FormModal2.appendChild(containerImageModal2);
+
+ //Création de l'icone image dans le formulaire
+ const imageIconeModal2 = document.createElement("img");
+ imageIconeModal2.id = "icone-image-modal2";
+ imageIconeModal2.src ="./assets/icons/icon-img-modal2.png"
+ containerImageModal2.appendChild(imageIconeModal2);
 
   //Création de la div qui contiendra les images des projets
   //  const modalGallery = document.createElement("div");
