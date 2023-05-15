@@ -455,6 +455,12 @@ typeFileAccepted.className = "file-accepted";
 typeFileAccepted.innerText="jpg. png : 4mo max";
 containerImageModal2.appendChild(typeFileAccepted);
 
+//Création  de la div pour le titre
+const ContainerTitleInputModal2 = document.createElement("div");
+ContainerTitleInputModal2.className ="title-container";
+
+
+
   //Création de la div qui contiendra les images des projets
   //  const modalGallery = document.createElement("div");
   //  modalGallery.classList.add("js-modal-gallery");
