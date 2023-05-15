@@ -484,6 +484,17 @@ categoryLabel.for = "categorie"
 categoryLabel.innerText = "Catégorie";
 ContainerSelectModal2.appendChild(categoryLabel); 
 
+// Création du selecteur de catégories
+const categorySelect = document.createElement("select");
+categorySelect.id = "categorie";
+categorySelect.name = "categorie";
+categorySelect.innerHTML = `
+<option value="appartements">Appartements</option>
+<option value="objet">Objet</option>
+<option value="hotels_restaurants">Hotels & Restaurants</option>
+`;
+ContainerSelectModal2.appendChild(categorySelect);
+
 
   //Création de la div qui contiendra les images des projets
   //  const modalGallery = document.createElement("div");
