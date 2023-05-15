@@ -914,4 +914,49 @@ footer nav {
   height: 51px;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
   border: none;
+  font-family: "Work Sans";
 }
+
+.container-select {
+  display: flex;
+  flex-direction: column;
+  width: 420px;
+  margin-left: 105px;
+  margin-top: 25px;
+  font-size: 14px;
+  border-bottom: 1px solid rgb(179,179,179);
+  padding-bottom: 50px;
+  
+}
+
+.container-select #categorie {
+  height: 51px;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  border: none;
+  font-size: 14px;
+  font-family: "Work Sans";
+}
+
+#btn-submit-modal2 {
+  background-color: rgb(167,167,167);
+  color: white;
+  font-family: "Work Sans";
+  border-radius: 60px;
+  width: 237px;
+  height: 36px;
+  margin-left: 195px;
+  border: none;
+  margin-top: 30px;
+  font-size: 16px;
+}
+
+.msg-error-modal2{
+  color: red;
+  /* border: 2px solid red; */
+  margin-top: 10px;
+  width: 350px;
+  margin-left: 105px;
+  padding-left: 50px;
+  
+}
+
