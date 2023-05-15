@@ -458,8 +458,13 @@ containerImageModal2.appendChild(typeFileAccepted);
 //Création  de la div pour le titre
 const ContainerTitleInputModal2 = document.createElement("div");
 ContainerTitleInputModal2.className ="title-container";
+FormModal2.appendChild(ContainerTitleInputModal2);
 
-
+//Création du Label pour l'input titre
+const titleLabelModal2 = document.createElement("label");
+titleLabelModal2.for = "titre";
+titleLabelModal2.innerText="Titre";
+ContainerTitleInputModal2.appendChild(titleLabelModal2);
 
   //Création de la div qui contiendra les images des projets
   //  const modalGallery = document.createElement("div");
