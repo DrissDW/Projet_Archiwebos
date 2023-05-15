@@ -473,6 +473,18 @@ titleInputModal2.id = "titre";
 titleInputModal2.name = "titre";
 ContainerTitleInputModal2.appendChild(titleInputModal2);
 
+//Création de la div du sélecteur de catégorie
+const ContainerSelectModal2 = document.createElement("div");
+ContainerSelectModal2.className= "container-select";
+FormModal2.appendChild(ContainerSelectModal2);
+
+//Création du Label Catégorie 
+const categoryLabel = document.createElement("label");
+categoryLabel.for = "categorie"
+categoryLabel.innerText = "Catégorie";
+ContainerSelectModal2.appendChild(categoryLabel); 
+
+
   //Création de la div qui contiendra les images des projets
   //  const modalGallery = document.createElement("div");
   //  modalGallery.classList.add("js-modal-gallery");
