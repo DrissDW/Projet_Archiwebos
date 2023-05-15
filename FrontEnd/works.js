@@ -466,6 +466,13 @@ titleLabelModal2.for = "titre";
 titleLabelModal2.innerText="Titre";
 ContainerTitleInputModal2.appendChild(titleLabelModal2);
 
+//Création de l'input de type texte Titre
+const titleInputModal2 = document.createElement("input");
+titleInputModal2.type = "text";
+titleInputModal2.id = "titre";
+titleInputModal2.name = "titre";
+ContainerTitleInputModal2.appendChild(titleInputModal2);
+
   //Création de la div qui contiendra les images des projets
   //  const modalGallery = document.createElement("div");
   //  modalGallery.classList.add("js-modal-gallery");
