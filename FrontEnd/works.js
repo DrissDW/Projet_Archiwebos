@@ -489,11 +489,54 @@ const categorySelect = document.createElement("select");
 categorySelect.id = "categorie";
 categorySelect.name = "categorie";
 categorySelect.innerHTML = `
+<option value="hotels_restaurants">Hotels & Restaurants</option>
 <option value="appartements">Appartements</option>
 <option value="objet">Objet</option>
-<option value="hotels_restaurants">Hotels & Restaurants</option>
 `;
 ContainerSelectModal2.appendChild(categorySelect);
+
+
+
+
+//Création du bouton valider
+const submitButtonModal2 = document.createElement("button");
+submitButtonModal2.type = "submit";
+submitButtonModal2.innerText = "Valider";
+submitButtonModal2.id="btn-submit-modal2"
+FormModal2.appendChild(submitButtonModal2);
+
+//Ajout d'un listener au boutton valider pour vérifier que le formulaire est totalment remplie
+document.getElementById("form-modal2").addEventListener("submit", function(event){
+  event.preventDefault();
+
+  const image = document.getElementById("image").files[0];
+  const titre = document.getElementById('titre').value;
+  const categorie = document.getElementById('categorie').value;
+
+  if ( image && titre && categorie){
+    console.log('Image: ', image);
+    console.log('Titre: ', titre);
+    console.log('Catégorie: ', categorie);
+    submitButtonModal2.style.backgroundColor = "rgb(29,97,84)";
+  }
+  else {
+    //Création d'un message d'erreur si le formulaire n'es pas remplie correctement
+const messageErrorModal2 = document.createElement("p");
+messageErrorModal2.className = "msg-error-modal2";
+messageErrorModal2.innerText= "Le formulaire n’est pas correctement rempli.";
+// FormModal2.insertBefore(messageErrorModal2, submitButtonModal2);
+FormModal2.appendChild(messageErrorModal2);
+
+// Ajout du listener au bouton valider pour supprimer le message d'erreur et éviter les répétitions
+submitButtonModal2.addEventListener("click", function(){
+  messageErrorModal2.innerHTML = "";
+
+  submitButtonModal2.style.backgroundColor = "rgb(167,167,167)";
+})
+  }
+
+ 
+})
 
 
   //Création de la div qui contiendra les images des projets
