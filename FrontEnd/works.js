@@ -426,6 +426,35 @@ if (token) {
  imageIconeModal2.src ="./assets/icons/icon-img-modal2.png"
  containerImageModal2.appendChild(imageIconeModal2);
 
+ //Création de l'input pou ajouter un fichier image
+ const addImageInput = document.createElement("input");
+ addImageInput.type = "file";
+ addImageInput.id = "image"
+ addImageInput.name = "image";
+ addImageInput.accept= ".png, .jpg";
+ addImageInput.innerText = "ajouter une photo";
+ addImageInput.style.display="none";
+ containerImageModal2.appendChild(addImageInput);
+
+// Création du bouton qui déclenchera l'input
+const addImageButton = document.createElement("button");
+addImageButton.type = "button"; // important pour ne pas soumettre le formulaire
+addImageButton.id = "btn-add-image";
+addImageButton.innerText = "+Ajouter photo";
+containerImageModal2.appendChild(addImageButton);
+
+// Ajout d'un listeners sur le bouton qui permettra d'enclenché la fonction de l'input addImageInput
+addImageButton.addEventListener("click", function() {
+  // déclenche le clic sur l'input
+  addImageInput.click();
+});
+
+//Ajout du texte p qui precisera les types de fichier acceptés 
+const typeFileAccepted = document.createElement("p");
+typeFileAccepted.className = "file-accepted";
+typeFileAccepted.innerText="jpg. png : 4mo max";
+containerImageModal2.appendChild(typeFileAccepted);
+
   //Création de la div qui contiendra les images des projets
   //  const modalGallery = document.createElement("div");
   //  modalGallery.classList.add("js-modal-gallery");
