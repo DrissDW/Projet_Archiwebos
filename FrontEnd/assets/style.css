@@ -897,3 +897,21 @@ footer nav {
   left: 169px;
   font-family: "Work Sans";
 }
+
+.title-container {
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  width: 420px;
+  margin-left: 105px;
+  margin-top: 40px;
+  font-size: 14px;
+  
+ 
+}
+
+.title-container #titre {
+  height: 51px;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  border: none;
+}
