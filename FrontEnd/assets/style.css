@@ -873,6 +873,7 @@ footer nav {
   margin-right: auto;
   margin-top: 36px;
   background-color:rgb(232,241,246) ;
+  /* display: flex; */
 }
 
 #btn-add-image {
@@ -957,6 +958,15 @@ footer nav {
   width: 350px;
   margin-left: 105px;
   padding-left: 50px;
+  
+}
+
+#image-visual {
+  height: 169px;
+  width: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   
 }
 
