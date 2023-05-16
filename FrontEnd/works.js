@@ -335,7 +335,7 @@ if (token) {
   modal2.setAttribute("aria-hidden", "true");
   modal2.setAttribute("role", "dialog");
   modal2.setAttribute("aria-label", "Fenêtre modale pour l'ajout de projet");
-  modal2.style.display = "block";
+  modal2.style.display = "none";
   //Séléction des éléments parents
   const galleryElement2 = document.querySelector(".gallery");
 
@@ -517,7 +517,7 @@ document.getElementById("form-modal2").addEventListener("submit", function(event
     console.log('Image: ', image);
     console.log('Titre: ', titre);
     console.log('Catégorie: ', categorie);
-    submitButtonModal2.style.backgroundColor = "rgb(29,97,84)";
+    
   }
   else {
     //Création d'un message d'erreur si le formulaire n'es pas remplie correctement
@@ -531,12 +531,62 @@ FormModal2.appendChild(messageErrorModal2);
 submitButtonModal2.addEventListener("click", function(){
   messageErrorModal2.innerHTML = "";
 
-  submitButtonModal2.style.backgroundColor = "rgb(167,167,167)";
+  
 })
   }
 
  
 })
+
+//Ajout du fait que des que je charge une image que je puisse la voir dans le container img modal 2
+ const imageInput = document.getElementById("image");
+ 
+
+ //Ajout d'un listener change à l'input imageInput
+ imageInput.addEventListener("change", function(){
+  //on récupère le fichier sélectionné
+  const file = this.files[0];
+
+  if(file){
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function(){
+
+      //création de l'image a afficher
+
+      const imageVisual = document.createElement("img");
+      imageVisual.id = "image-visual";
+
+      //mise a jour de la source de l'image avec son url
+      imageVisual.src = this.result;
+
+      //Ajout de l'image au DOM
+      containerImageModal2.appendChild(imageVisual);
+
+      imageIconeModal2.style.display = "none";
+      addImageButton.style.display = "none";
+      addImageInput.style.display = "none";
+      typeFileAccepted.style.display = "none";
+
+      //Ajout d'un listener à l'image quand on clique dessus pour lancer le choix du file
+      imageVisual.addEventListener("dblclick", function (){
+        addImageInput.click();
+        modal2.style.display = "block";
+        imageVisual.remove();
+        imageIconeModal2.style.display = "";
+       addImageButton.style.display = "";
+       addImageInput.style.display = "none";
+        
+      })
+      
+    });
+
+    reader.readAsDataURL(file);
+  }
+  else {
+    imageVisual.src = "";
+  }
+ })
 
 
   //Création de la div qui contiendra les images des projets
