@@ -488,11 +488,20 @@ ContainerSelectModal2.appendChild(categoryLabel);
 const categorySelect = document.createElement("select");
 categorySelect.id = "categorie";
 categorySelect.name = "categorie";
-categorySelect.innerHTML = `
-<option value="hotels_restaurants">Hotels & Restaurants</option>
-<option value="appartements">Appartements</option>
-<option value="objet">Objet</option>
-`;
+
+const categories = [
+  { id: 1, name: "Objets" },
+  { id: 2, name: "Appartements" },
+  { id: 3, name: "Hotels & Restaurants" }
+];
+
+for (const category of categories) {
+  const option = document.createElement("option");
+  option.value = category.id;
+  option.textContent = category.name;
+  categorySelect.appendChild(option);
+}
+
 ContainerSelectModal2.appendChild(categorySelect);
 
 
@@ -506,21 +515,20 @@ submitButtonModal2.id="btn-submit-modal2"
 FormModal2.appendChild(submitButtonModal2);
 
 //Ajout d'un listener au boutton valider pour vérifier que le formulaire est totalment remplie
-document.getElementById("form-modal2").addEventListener("submit", function(event){
+document.getElementById("form-modal2").addEventListener("submit", function(event) {
   event.preventDefault();
   
- 
+  const token = localStorage.getItem("token");
   const image = document.getElementById("image").files[0];
   const titre = document.getElementById('titre').value;
   const categorie = document.getElementById('categorie').value;
-  
-  if ( image && titre && categorie){
+
+  if (image && titre && categorie) {
     const formData = new FormData();
     formData.append("image", image);
-    formData.append("titre", titre);
-    formData.append("categorie", categorie);
-    
-    // Envoi des données du formulaire à l'API
+    formData.append("title", titre);
+    formData.append("category", categorie);
+
     fetch("http://localhost:5678/api/works", {
       method: "POST",
       headers: {
