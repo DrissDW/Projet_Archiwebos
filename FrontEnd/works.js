@@ -417,199 +417,219 @@ if (token) {
 
   //Création de la div qui contiendra l'imaga du fichier chargé
   const containerImageModal2 = document.createElement("div");
-  containerImageModal2.className="container-img-modal2";
+  containerImageModal2.className = "container-img-modal2";
   FormModal2.appendChild(containerImageModal2);
 
- //Création de l'icone image dans le formulaire
- const imageIconeModal2 = document.createElement("img");
- imageIconeModal2.id = "icone-image-modal2";
- imageIconeModal2.src ="./assets/icons/icon-img-modal2.png"
- containerImageModal2.appendChild(imageIconeModal2);
+  //Création de l'icone image dans le formulaire
+  const imageIconeModal2 = document.createElement("img");
+  imageIconeModal2.id = "icone-image-modal2";
+  imageIconeModal2.src = "./assets/icons/icon-img-modal2.png";
+  containerImageModal2.appendChild(imageIconeModal2);
 
- //Création de l'input pou ajouter un fichier image
- const addImageInput = document.createElement("input");
- addImageInput.type = "file";
- addImageInput.id = "image"
- addImageInput.name = "image";
- addImageInput.accept= ".png, .jpg";
- addImageInput.innerText = "ajouter une photo";
- addImageInput.style.display="none";
- containerImageModal2.appendChild(addImageInput);
+  //Création de l'input pou ajouter un fichier image
+  const addImageInput = document.createElement("input");
+  addImageInput.type = "file";
+  addImageInput.id = "image";
+  addImageInput.name = "image";
+  addImageInput.accept = ".png, .jpg";
+  addImageInput.innerText = "ajouter une photo";
+  addImageInput.style.display = "none";
+  containerImageModal2.appendChild(addImageInput);
 
-// Création du bouton qui déclenchera l'input
-const addImageButton = document.createElement("button");
-addImageButton.type = "button"; // important pour ne pas soumettre le formulaire
-addImageButton.id = "btn-add-image";
-addImageButton.innerText = "+Ajouter photo";
-containerImageModal2.appendChild(addImageButton);
+  // Création du bouton qui déclenchera l'input
+  const addImageButton = document.createElement("button");
+  addImageButton.type = "button"; // important pour ne pas soumettre le formulaire
+  addImageButton.id = "btn-add-image";
+  addImageButton.innerText = "+Ajouter photo";
+  containerImageModal2.appendChild(addImageButton);
 
-// Ajout d'un listeners sur le bouton qui permettra d'enclenché la fonction de l'input addImageInput
-addImageButton.addEventListener("click", function() {
-  // déclenche le clic sur l'input
-  addImageInput.click();
-});
+  // Ajout d'un listeners sur le bouton qui permettra d'enclenché la fonction de l'input addImageInput
+  addImageButton.addEventListener("click", function () {
+    // déclenche le clic sur l'input
+    addImageInput.click();
+  });
 
-//Ajout du texte p qui precisera les types de fichier acceptés 
-const typeFileAccepted = document.createElement("p");
-typeFileAccepted.className = "file-accepted";
-typeFileAccepted.innerText="jpg. png : 4mo max";
-containerImageModal2.appendChild(typeFileAccepted);
+  //Ajout du texte p qui precisera les types de fichier acceptés
+  const typeFileAccepted = document.createElement("p");
+  typeFileAccepted.className = "file-accepted";
+  typeFileAccepted.innerText = "jpg. png : 4mo max";
+  containerImageModal2.appendChild(typeFileAccepted);
 
-//Création  de la div pour le titre
-const ContainerTitleInputModal2 = document.createElement("div");
-ContainerTitleInputModal2.className ="title-container";
-FormModal2.appendChild(ContainerTitleInputModal2);
+  //Création  de la div pour le titre
+  const ContainerTitleInputModal2 = document.createElement("div");
+  ContainerTitleInputModal2.className = "title-container";
+  FormModal2.appendChild(ContainerTitleInputModal2);
 
-//Création du Label pour l'input titre
-const titleLabelModal2 = document.createElement("label");
-titleLabelModal2.for = "titre";
-titleLabelModal2.innerText="Titre";
-ContainerTitleInputModal2.appendChild(titleLabelModal2);
+  //Création du Label pour l'input titre
+  const titleLabelModal2 = document.createElement("label");
+  titleLabelModal2.for = "titre";
+  titleLabelModal2.innerText = "Titre";
+  ContainerTitleInputModal2.appendChild(titleLabelModal2);
 
-//Création de l'input de type texte Titre
-const titleInputModal2 = document.createElement("input");
-titleInputModal2.type = "text";
-titleInputModal2.id = "titre";
-titleInputModal2.name = "titre";
-ContainerTitleInputModal2.appendChild(titleInputModal2);
+  //Création de l'input de type texte Titre
+  const titleInputModal2 = document.createElement("input");
+  titleInputModal2.type = "text";
+  titleInputModal2.id = "titre";
+  titleInputModal2.name = "titre";
+  ContainerTitleInputModal2.appendChild(titleInputModal2);
 
-//Création de la div du sélecteur de catégorie
-const ContainerSelectModal2 = document.createElement("div");
-ContainerSelectModal2.className= "container-select";
-FormModal2.appendChild(ContainerSelectModal2);
+  //Création de la div du sélecteur de catégorie
+  const ContainerSelectModal2 = document.createElement("div");
+  ContainerSelectModal2.className = "container-select";
+  FormModal2.appendChild(ContainerSelectModal2);
 
-//Création du Label Catégorie 
-const categoryLabel = document.createElement("label");
-categoryLabel.for = "categorie"
-categoryLabel.innerText = "Catégorie";
-ContainerSelectModal2.appendChild(categoryLabel); 
+  //Création du Label Catégorie
+  const categoryLabel = document.createElement("label");
+  categoryLabel.for = "categorie";
+  categoryLabel.innerText = "Catégorie";
+  ContainerSelectModal2.appendChild(categoryLabel);
 
-// Création du selecteur de catégories
-const categorySelect = document.createElement("select");
-categorySelect.id = "categorie";
-categorySelect.name = "categorie";
+  // Création du selecteur de catégories
+  const categorySelect = document.createElement("select");
+  categorySelect.id = "categorie";
+  categorySelect.name = "categorie";
 
-const categories = [
-  { id: 1, name: "Objets" },
-  { id: 2, name: "Appartements" },
-  { id: 3, name: "Hotels & Restaurants" }
-];
+  const categories = [
+    { id: 1, name: "Objets" },
+    { id: 2, name: "Appartements" },
+    { id: 3, name: "Hotels & Restaurants" },
+  ];
 
-for (const category of categories) {
-  const option = document.createElement("option");
-  option.value = category.id;
-  option.textContent = category.name;
-  categorySelect.appendChild(option);
-}
-
-ContainerSelectModal2.appendChild(categorySelect);
-
-
-
-
-//Création du bouton valider
-const submitButtonModal2 = document.createElement("button");
-submitButtonModal2.type = "submit";
-submitButtonModal2.innerText = "Valider";
-submitButtonModal2.id="btn-submit-modal2"
-FormModal2.appendChild(submitButtonModal2);
-
-//Ajout d'un listener au boutton valider pour vérifier que le formulaire est totalment remplie
-document.getElementById("form-modal2").addEventListener("submit", function(event) {
-  event.preventDefault();
-  
-  const token = localStorage.getItem("token");
-  const image = document.getElementById("image").files[0];
-  const titre = document.getElementById('titre').value;
-  const categorie = document.getElementById('categorie').value;
-
-  if (image && titre && categorie) {
-    const formData = new FormData();
-    formData.append("image", image);
-    formData.append("title", titre);
-    formData.append("category", categorie);
-
-    fetch("http://localhost:5678/api/works", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${token}`
-      },
-      body: formData
-    })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.error('Erreur Fetch:', error));
-    
-  }
-  else {
-    //Création d'un message d'erreur si le formulaire n'es pas remplie correctement
-const messageErrorModal2 = document.createElement("p");
-messageErrorModal2.className = "msg-error-modal2";
-messageErrorModal2.innerText= "Le formulaire n’est pas correctement rempli.";
-// FormModal2.insertBefore(messageErrorModal2, submitButtonModal2);
-FormModal2.appendChild(messageErrorModal2);
-
-// Ajout du listener au bouton valider pour supprimer le message d'erreur et éviter les répétitions
-submitButtonModal2.addEventListener("click", function(){
-  messageErrorModal2.innerHTML = "";
-
-  
-})
+  for (const category of categories) {
+    const option = document.createElement("option");
+    option.value = category.id;
+    option.textContent = category.name;
+    categorySelect.appendChild(option);
   }
 
- 
-})
+  ContainerSelectModal2.appendChild(categorySelect);
 
-//Ajout du fait que des que je charge une image que je puisse la voir dans le container img modal 2
- const imageInput = document.getElementById("image");
- 
+  //Création du bouton valider
+  const submitButtonModal2 = document.createElement("button");
+  submitButtonModal2.type = "submit";
+  submitButtonModal2.innerText = "Valider";
+  submitButtonModal2.id = "btn-submit-modal2";
+  FormModal2.appendChild(submitButtonModal2);
 
- //Ajout d'un listener change à l'input imageInput
- imageInput.addEventListener("change", function(){
-  //on récupère le fichier sélectionné
-  const file = this.files[0];
+  // Ajout d'un écouteur d'événements sur le formulaire pour vérifier son état
+  document.getElementById("form-modal2").addEventListener("input", function () {
+    // On vérifie si le formulaire est entièrement rempli
+    const image = document.getElementById("image").files[0];
+    const titre = document.getElementById("titre").value;
+    const categorie = document.getElementById("categorie").value;
 
-  if(file){
-    const reader = new FileReader();
+    if (image && titre && categorie) {
+      // la couleur du bouton passe au vert
+      submitButtonModal2.style.backgroundColor = "rgb(29,97,84)";
 
-    reader.addEventListener("load", function(){
+      // Ajout un écouteur d'événement pour le survol du bouton
+      submitButtonModal2.addEventListener("mouseenter", function () {
+        // Ajout les styles d'effet de survol
+        submitButtonModal2.style.backgroundColor = "rgb(14,47,40)";
+      });
 
-      //création de l'image a afficher
+      // Ajout un écouteur d'événement pour la sortie du survol du bouton
+      submitButtonModal2.addEventListener("mouseleave", function () {
+        // Supprission les styles d'effet de survol
+        submitButtonModal2.style.backgroundColor = "rgb(29,97,84)";
+      });
+    } else {
+      // Supprimez la classe CSS pour le bouton Valider en vert
+      submitButtonModal2.style.backgroundColor = "";
+    }
+  });
 
-      const imageVisual = document.createElement("img");
-      imageVisual.id = "image-visual";
+  //Ajout d'un listener au boutton valider pour vérifier que le formulaire est totalement remplie
+  document
+    .getElementById("form-modal2")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
 
-      //mise a jour de la source de l'image avec son url
-      imageVisual.src = this.result;
+      const token = localStorage.getItem("token");
+      const image = document.getElementById("image").files[0];
+      const titre = document.getElementById("titre").value;
+      const categorie = document.getElementById("categorie").value;
 
-      //Ajout de l'image au DOM
-      containerImageModal2.appendChild(imageVisual);
+      if (image && titre && categorie) {
+        const formData = new FormData();
+        formData.append("image", image);
+        formData.append("title", titre);
+        formData.append("category", categorie);
 
-      imageIconeModal2.style.display = "none";
-      addImageButton.style.display = "none";
-      addImageInput.style.display = "none";
-      typeFileAccepted.style.display = "none";
+        fetch("http://localhost:5678/api/works", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => console.log(data))
+          .catch((error) => console.error("Erreur Fetch:", error));
+      } else {
+        //Création d'un message d'erreur si le formulaire n'es pas remplie correctement
+        const messageErrorModal2 = document.createElement("p");
+        messageErrorModal2.className = "msg-error-modal2";
+        messageErrorModal2.innerText =
+          "Le formulaire n’est pas correctement rempli.";
+        // FormModal2.insertBefore(messageErrorModal2, submitButtonModal2);
+        FormModal2.appendChild(messageErrorModal2);
 
-      //Ajout d'un listener à l'image quand on clique dessus pour lancer le choix du file
-      imageVisual.addEventListener("dblclick", function (){
-        addImageInput.click();
-        modal2.style.display = "block";
-        imageVisual.remove();
-        imageIconeModal2.style.display = "";
-       addImageButton.style.display = "";
-       addImageInput.style.display = "none";
-        
-      })
-      
+        // Ajout du listener au bouton valider pour supprimer le message d'erreur et éviter les répétitions
+        submitButtonModal2.addEventListener("click", function () {
+          messageErrorModal2.innerHTML = "";
+        });
+      }
+
+      //Ajout d'un listener a mon bouton valider pour le rendre vert une fois le formualire entièrement rempli
+      // Sélectionnez le bouton Valider
+      // const btnValider = document.getElementById('btn-valider');
     });
 
-    reader.readAsDataURL(file);
-  }
-  else {
-    imageVisual.src = "";
-  }
- })
+  //Ajout du fait que des que je charge une image que je puisse la voir dans le container img modal 2
+  const imageInput = document.getElementById("image");
 
+  //Ajout d'un listener change à l'input imageInput
+  imageInput.addEventListener("change", function () {
+    //on récupère le fichier sélectionné
+    const file = this.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.addEventListener("load", function () {
+        //création de l'image a afficher
+
+        const imageVisual = document.createElement("img");
+        imageVisual.id = "image-visual";
+
+        //mise a jour de la source de l'image avec son url
+        imageVisual.src = this.result;
+
+        //Ajout de l'image au DOM
+        containerImageModal2.appendChild(imageVisual);
+
+        imageIconeModal2.style.display = "none";
+        addImageButton.style.display = "none";
+        addImageInput.style.display = "none";
+        typeFileAccepted.style.display = "none";
+
+        //Ajout d'un listener à l'image quand on clique dessus pour lancer le choix du file
+        imageVisual.addEventListener("dblclick", function () {
+          addImageInput.click();
+          modal2.style.display = "block";
+          imageVisual.remove();
+          imageIconeModal2.style.display = "";
+          addImageButton.style.display = "";
+          addImageInput.style.display = "none";
+        });
+      });
+
+      reader.readAsDataURL(file);
+    } else {
+      imageVisual.src = "";
+    }
+  });
 
   //Création de la div qui contiendra les images des projets
   //  const modalGallery = document.createElement("div");
