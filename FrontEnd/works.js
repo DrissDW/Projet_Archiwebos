@@ -508,15 +508,29 @@ FormModal2.appendChild(submitButtonModal2);
 //Ajout d'un listener au boutton valider pour vérifier que le formulaire est totalment remplie
 document.getElementById("form-modal2").addEventListener("submit", function(event){
   event.preventDefault();
-
+  
+ 
   const image = document.getElementById("image").files[0];
   const titre = document.getElementById('titre').value;
   const categorie = document.getElementById('categorie').value;
-
+  
   if ( image && titre && categorie){
-    console.log('Image: ', image);
-    console.log('Titre: ', titre);
-    console.log('Catégorie: ', categorie);
+    const formData = new FormData();
+    formData.append("image", image);
+    formData.append("titre", titre);
+    formData.append("categorie", categorie);
+    
+    // Envoi des données du formulaire à l'API
+    fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${token}`
+      },
+      body: formData
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Erreur Fetch:', error));
     
   }
   else {
