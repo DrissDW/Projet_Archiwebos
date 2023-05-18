@@ -41,6 +41,8 @@ if (token) {
   iconEditionModIntroduction.src = "./assets/icons/icon-edit-archiwebos.png";
   const modifierEditionModIntroduction = document.createElement("button");
   modifierEditionModIntroduction.innerText = "modifier";
+  //changement du curseur de la souris pour le bouton modifier
+  modifierEditionModIntroduction.style.cursor = "pointer";
 
   //Ajout d'un id à l'icone et au bouton:
   iconEditionModIntroduction.id = "icon-introduction";
@@ -58,6 +60,8 @@ if (token) {
   iconEditionModProjet.src = "./assets/icons/icon-edit-archiwebos.png";
   const modifierEditionModProjet = document.createElement("button");
   modifierEditionModProjet.innerText = "modifier";
+  //changement du curseur de la souris pour le bouton modifier
+  modifierEditionModProjet.style.cursor = "pointer";
 
   //Ajout d'un id à l'icone et du bouton
   iconEditionModProjet.id = "icon-projet";
@@ -112,6 +116,10 @@ if (token) {
   loginLink.href = "#";
   logoutLink.innerText = "logout";
 
+  //modification du curseur de la souris pour le lien logout
+  logoutLink.style.cursor = "pointer";
+
+  
   //remplacement du lien Login par Logout
   loginLink.replaceWith(logoutLink);
 
