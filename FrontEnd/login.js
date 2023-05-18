@@ -10,10 +10,10 @@ loginForm.addEventListener("submit", async function (event) {
 
   // création de la charge utile au format JSON
   const chargeUtile = JSON.stringify({ email, password });
-  if (!email || !password){
+  if (!email || !password) {
     const errorMessageElement = document.createElement("p");
     errorMessageElement.innerText =
-    "Veuillez entrer un Email et un mot de passe valides.";
+      "Veuillez entrer un Email et un mot de passe valides.";
     const errorMessage = document.querySelector(".error-msg-1");
     errorMessage.appendChild(errorMessageElement);
 
@@ -31,7 +31,6 @@ loginForm.addEventListener("submit", async function (event) {
       headers: { "Content-Type": "application/json" },
       body: chargeUtile,
     });
-   
 
     if (rep.ok) {
       //si la reponse est ok, on récupère les données JSON de la réponse

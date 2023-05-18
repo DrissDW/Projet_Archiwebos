@@ -178,31 +178,6 @@ if (token) {
   modalGallery.classList.add("js-modal-gallery");
   modalContainer.appendChild(modalGallery);
 
-  //ajout fonction deletImage
-  async function deleteImage(imageId) {
-    try {
-      const response = await fetch(
-        `http://localhost:5678/api/works/${imageId}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      if (!response.ok) {
-        alert(`Une erreur est survenue: ${response.statusText}`);
-      } else {
-        await response.json();
-        return true;
-      }
-    } catch (error) {
-      console.log("Erreur lors de la suppression de l'image:", error);
-    }
-  }
-
   // Fonction pour générer la galerie modale
   function generateModalGallery(works) {
     for (let i = 0; i < works.length; i++) {
@@ -237,28 +212,54 @@ if (token) {
       imageWrapper.appendChild(modalMoveIcon);
       modalGallery.appendChild(imageWrapper);
 
-      //ajout d'un listener a l'icone trash pour supprimer une image
+      //ajout fonction deletImage
+      async function deleteImage(imageId) {
+        try {
+          const response = await fetch(
+            `http://localhost:5678/api/works/${imageId}`,
+            {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
 
-      modalDeleteIcon.addEventListener("click", async function (e) {
-        e.preventDefault();
-        // const buttonId = modalDeleteIcon.getAttribute("data-id");
+          if (!response.ok) {
+            alert(`Une erreur est survenue: ${response.statusText}`);
+          } else {
+            await response.json();
+            return true;
+          }
+        } catch (error) {
+          console.log("Erreur lors de la suppression de l'image:", error);
+        }
+      }
+      //ajout d'un listener a l'icone trash pour supprimer une image
+      modalDeleteIcon.addEventListener("click", async function (event) {
+        console.log("delete icon clicked");
+
+        event.stopPropagation();
+
         const imageId = imageWrapper.getAttribute("data-id");
         const imageElement = document.querySelector(
-          'img[data-id="${imageId}"]'
+          `img[data-id="${imageId}"]`
         );
 
         const ImageApiDeleteSucces = await deleteImage(imageId);
 
         if (ImageApiDeleteSucces && imageElement) {
-          imageElement.remove();
+          setTimeout(() => {
+            imageElement.remove();
+          }, 100);
         }
-
-        // const id = event.target.dataset.id;
-        // console.log("tu as clik sur le bouton ");
-        // console.log("l'ID de ton bouton est :" + buttonId);
-        // console.log("La valeur de data-id est :" + imageId);
       });
 
+      // const id = event.target.dataset.id;
+      // console.log("tu as clik sur le bouton ");
+      // console.log("l'ID de ton bouton est :" + buttonId);
+      // console.log("La valeur de data-id est :" + imageId);
       //on cache l'icône move-edit par défaut
       modalMoveIcon.style.display = "none";
 
@@ -284,7 +285,13 @@ if (token) {
     document
       .querySelector(".modal")
       .addEventListener("click", function (event) {
-        if (event.target === modal) {
+        event.preventDefault();
+        console.log("Modal clicked");
+        // Check if the clicked element is not the delete icon
+        if (
+          event.target === modal &&
+          !event.target.classList.contains("icon-delete-photo")
+        ) {
           modal.style.display = "none";
           modalButtonClose.setAttribute("aria-hidden", "true");
           modal.removeAttribute("arial-modal");
@@ -398,6 +405,7 @@ if (token) {
 
   //Ajout d'un listner pour la fermeture du modal2 quand on clique en dehors du modale
   document.querySelector(".modal2").addEventListener("click", function (event) {
+    console.log("Modal clicked");
     if (event.target === modal2) {
       modal2.style.display = "none";
       modal2ButtonClose.setAttribute("aria-hidden", "true");
