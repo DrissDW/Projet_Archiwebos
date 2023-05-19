@@ -237,8 +237,30 @@ if (token) {
           if (!response.ok) {
             alert(`Une erreur est survenue: ${response.statusText}`);
           } else {
-            await response.json();
-            return true;
+            // await response.json();
+            // return true;
+            console.log("Projet supprimé avec succès");
+            //on récupère l'id 
+            const imageId = imageWrapper.getAttribute("data-id");
+            //item dans le modal
+            var imageElement = document.querySelector(`[data-id="${imageId}"]`);
+            //item dans la gallerie
+            var figureElement = document.querySelector(`[figure-id="${imageId}"]`);
+
+            //On vérifie si l'élément existe
+            if (imageElement && figureElement){
+              //On récupère les élément parents
+              var parentElement = imageElement.parentNode;
+              var parentElement2 = figureElement.parentNode;
+              // on supprimes l'élément du DOM à la fois dans la modal et dans la gallery
+              parentElement.removeChild(imageElement);
+              parentElement2.removeChild(figureElement);
+            }else {
+              // Si l'élement data-id spéécifié n'a pas été trouvé
+              console.log("L'élément n'existe pas.");
+              console.log("data-id = " + imageId);
+            }
+
           }
         } catch (error) {
           console.log("Erreur lors de la suppression de l'image:", error);
@@ -580,7 +602,58 @@ if (token) {
           body: formData,
         })
           .then((response) => response.json())
-          .then((data) => console.log(data))
+          .then((data) => {
+            // work = data; ne peut pas être stockée
+
+            //Rajout dans la gallerie
+            const project = data;
+            const id = data.id;
+            const titleElement = document.createElement("figcaption");
+              titleElement.innerText = project.title;
+          
+              const imageElement = document.createElement("img");
+              imageElement.src = project.imageUrl;
+          
+              const figureElement = document.createElement("figure");
+          
+              const galleryProjects = document.querySelector(".gallery");
+
+               // Ajouter les éléments enfants à la figure
+               figureElement.setAttribute("figure-id", id);
+               figureElement.appendChild(imageElement);
+               figureElement.appendChild(titleElement);
+
+             // Rajout dans le modal
+             const modalProjet = data;
+             // Création d'une div pour chaque paire d'image et de message "Éditer"
+             const imageWrapper = document.createElement("div");
+             imageWrapper.classList.add("image-wrapper");
+
+             const imageElementModal = document.createElement("img");
+             imageElementModal.src = modalProjet.imageUrl;
+
+             const modalEditerMessage = document.createElement("p");
+             modalEditerMessage.classList.add("editer-message");
+             modalEditerMessage.innerText = "éditer";
+
+             const modalDeleteIcon = document.createElement("i");
+             modalDeleteIcon.classList.add("fa", "fa-trash", "icon-delete-photo");
+
+             const modalMoveIcon = document.createElement("i");
+             modalMoveIcon.classList.add(
+               "fa",
+               "fa-arrows-up-down-left-right",
+               "move-icon"
+             );
+             imageWrapper.setAttribute("data-id", id);
+             modalDeleteIcon.setAttribute("data-id", id);
+             imageWrapper.appendChild(imageElementModal);
+             imageWrapper.appendChild(modalEditerMessage);
+             imageWrapper.appendChild(modalDeleteIcon);
+             imageWrapper.appendChild(modalMoveIcon);
+             modalGallery.appendChild(imageWrapper);
+          }
+          )
           .catch((error) => console.error("Erreur Fetch:", error));
       } else {
         //Création d'un message d'erreur si le formulaire n'es pas remplie correctement
@@ -666,6 +739,8 @@ const works = await reponse.json();
 function generateProjects(works) {
   for (let i = 0; i < works.length; i++) {
     const project = works[i];
+    //on récupère l'id des works
+    const id = works[i].id;
 
     const titleElement = document.createElement("figcaption");
     titleElement.innerText = project.title;
@@ -681,6 +756,8 @@ function generateProjects(works) {
     galleryProjects.appendChild(figureElement);
 
     // Ajouter les éléments enfants à la figure
+    //on ajoute un data-id (figure-id)
+    figureElement.setAttribute("figure-id", id);
     figureElement.appendChild(imageElement);
     figureElement.appendChild(titleElement);
   }
