@@ -33,5 +33,29 @@ I have to develop:
 ---
 ## **Result :**
 ---
-You can view my work by going to the following link :         
-🖥️ **[COMING SOON]** 🖥️
+# Backend API - Sophie Bluel
+
+This repo contains the backend code of the architect Sophie Bluel. 
+
+## Launching the backend
+
+After getting the REPO run the command `npm install` to install the project dependencies
+
+Once the dependencies are installed, run the project with the command `npm start`.
+
+Test account for Sophie Bluel
+
+```
+email: sophie.bluel@test.tld
+
+password: S0phie 
+```
+Link to see the
+[Swagger documentation](http://localhost:5678/api-docs/)
+
+To read the documentation, use Chrome or Firefox
+
+---
+Hoping you will like the work.
+
+MALLALI Driss
