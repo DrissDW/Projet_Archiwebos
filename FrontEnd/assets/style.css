@@ -164,6 +164,7 @@ h1 {
   font-size: 22px;
   font-weight: 800;
   color: rgb(177, 102, 60);
+  margin-right: 500px;
 }
 
 h1 > span {
